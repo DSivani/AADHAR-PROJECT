@@ -1,0 +1,325 @@
+.container {
+  width: 1440px;
+  max-width: 90%;
+  margin: auto;
+  padding: 0 16px;
+}
+
+header {
+  height: 80px;
+  background-color: white;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+header img {
+  width: 150px;
+  height: auto;
+}
+header .logo {
+  display: inline-block;
+  color: white;
+  font-size: 27px;
+}
+
+header nav {
+  display: inline-block;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+header nav ul li {
+  display: inline-block;
+}
+header nav ul li.HamburgerMenu-icon {
+  display: none;
+}
+header nav ul li.HamburgerMenu-icon img {
+  background-color: white;
+  vertical-align: middle;
+  width: 26px;
+  height: auto;
+}
+header nav ul li a {
+  color: black;
+  font-size: 15px;
+  letter-spacing: 0.37px;
+  margin-right: 24px;
+  text-decoration: none;
+}
+header nav ul li a:hover {
+  color: #3e50e5;
+}
+header nav ul li:last-of-type a {
+  margin-right: 0;
+}
+
+section.login-section {
+  position: relative;
+  /* display: none; */
+}
+section.login-section img {
+  width: 100%;
+  height: 650px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  margin-top: 8px;
+  margin-bottom: 32px;
+}
+section.login-section .login-section-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+section.login-section .login-section-container {
+  max-width: 1170px;
+  padding: 0 32px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto;
+  /* position: absolute;
+  z-index: 0;
+  padding: 0 32px;*/
+}
+section.login-section .login-section-text {
+  width: 50%;
+  margin: auto 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+}
+
+section.login-section .login-section-heading {
+  width: 50%;
+  margin: auto 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+  color: #fff;
+  font-size: 60px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 58px;
+  margin-bottom: 28px;
+}
+section.login-section .login-section-heading-bold {
+  font-weight: 600;
+}
+section.login-section .login-section-desc {
+  max-width: 518px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 25px;
+  margin-top: 0;
+  margin-bottom: 21px;
+  padding: 0;
+  text-align: left;
+}
+
+section.login-section .login-section-form {
+  position: relative;
+  height: 450px;
+  width: 400px;
+  top: 0;
+  left: 0;
+  transform: none;
+  padding: 50px;
+  margin-top: 150px;
+}
+section.login-section #main-holder {
+  width: 80%;
+  height: 70%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: 0px 0px 5px 2px black;
+}
+section.login-section #login-error-msg-holder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+section.login-section #login-error-msg {
+  width: 90%;
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  /* border: 1px solid #8a0000; */
+  /* background-color: #e58f8f; */
+  opacity: 0;
+}
+
+/* section.login-section #error-msg-second-line {
+  display: block;
+} */
+
+section.login-section #login-form {
+  align-self: flex-start;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 200px;
+}
+
+section.login-section .login-form-field::placeholder {
+  color: #3a3a3a;
+}
+
+section.login-section .login-form-field {
+  border: none;
+  border-bottom: 1px solid #3a3a3a;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  outline: none;
+  padding: 0px 0px 5px 5px;
+  font-weight: bold;
+}
+
+section.login-section #login-form-submit {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: #3a3a3a;
+  cursor: pointer;
+  outline: none;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+  height: 37px;
+  font-size: 18px;
+}
+section.register-section .card {
+  background-color: #ffffff;
+  box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+  border-radius: 4px;
+  padding: 16px;
+  margin: auto;
+  max-width: 360px;
+  height: auto;
+  overflow: hidden;
+}
+h1 {
+  margin-left: 70px;
+}
+form li {
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+form ul li label {
+  float: left;
+  clear: left;
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+form ul li input,
+select,
+span {
+  float: left;
+  margin-bottom: 10px;
+}
+
+form textarea {
+  float: left;
+  width: 350px;
+  height: 150px;
+}
+
+[type="submit"] {
+  clear: left;
+  margin: 20px 0 0 230px;
+  font-size: 18px;
+}
+
+p {
+  margin-left: 70px;
+  font-weight: bold;
+}
+
+/*
+******************************CSS MEDIA QUERIES**********************
+*/
+
+/* Start of Design for small Desktops */
+
+@media screen and (max-width: 1440px) {
+  .container {
+    width: 1180px;
+  }
+  body {
+    padding-top: 70px;
+  }
+  header {
+    height: 70px;
+  }
+}
+/* End of Design for small Desktops */
+
+/* Start of design for Tablets */
+@media screen and (max-width: 960px) {
+  .container {
+    max-width: 92%;
+  }
+  header .logo {
+    font-size: 24px;
+  }
+  header nav ul li {
+    display: none;
+  }
+  header nav ul li.HamburgerMenu-icon {
+    display: inline-block;
+  }
+}
+/* End of design for Tablets */
+
+/* Start of design for Mobiles */
+@media screen and (max-width: 576px) {
+  header .logo {
+    font-size: 18px;
+  }
+  header .logo .blue-dot {
+    width: 7px;
+    height: 7px;
+  }
+}
+/* End of design for Mobiles */
