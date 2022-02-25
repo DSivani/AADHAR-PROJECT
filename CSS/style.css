@@ -188,7 +188,7 @@ section.login-section #login-form {
   display: grid;
   justify-items: center;
   align-items: center;
-  height: 200px;
+  height: 222px;
 }
 
 section.login-section .login-form-field::placeholder {
@@ -223,6 +223,22 @@ section.login-section #login-form-submit {
   height: 37px;
   font-size: 18px;
 }
+header #logo-UIAOI {
+  width: 300px;
+  height: 80px;
+}
+header #logo-aadhaar {
+  position: absolute;
+  right: 2px;
+}
+
+.register-bgImage {
+  /* background-image: url("https://sflc.in/sites/default/files/2018-11/1200px-Aadhaar_Logo.svg_.png"); */
+  background-repeat: no-repeat;
+}
+section.register-section {
+  margin-top: 92px;
+}
 section.register-section .card {
   background-color: #ffffff;
   box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
@@ -230,50 +246,174 @@ section.register-section .card {
   border-radius: 4px;
   padding: 16px;
   margin: auto;
-  max-width: 360px;
+  max-width: 800px;
   height: auto;
   overflow: hidden;
+  /* text-align: center; */
 }
-h1 {
-  margin-left: 70px;
+section.register-section .card h1 {
+  text-align: center;
+  color: rgb(2, 13, 81);
+  /* margin-left: 70px; */
 }
-form li {
-  list-style: none;
-  margin-bottom: 5px;
-}
-
-form ul li label {
-  float: left;
-  clear: left;
-  width: 100px;
-  text-align: right;
-  margin-right: 10px;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
+section.register-section .register .firstlabel {
+  text-transform: capitalize;
   font-size: 14px;
+  left: 0;
+  top: 0;
 }
 
-form ul li input,
-select,
-span {
-  float: left;
-  margin-bottom: 10px;
+section.register-section .register .register-firstname {
+  /* position: relative; */
+  left: 0;
+  top: 10px;
+  width: 70%;
+  line-height: 40px;
+  border-radius: 6px;
+  padding: 0 22px;
+  font-size: 16px;
+  height: 30px;
 }
-
-form textarea {
-  float: left;
-  width: 350px;
-  height: 150px;
+section.register-section .register .lastlabel {
+  text-transform: capitalize;
+  font-size: 14px;
+  left: 0;
+  top: 0;
+  /* color: #1bba93; */
 }
-
-[type="submit"] {
-  clear: left;
+section.register-section .register .register-lastname {
+  /* position: relative; */
+  left: 0;
+  top: 10px;
+  width: 70%;
+  height: 30px;
+  line-height: 40px;
+  border-radius: 6px;
+  padding: 0 22px;
+  font-size: 16px;
+}
+section.register-section table {
+  width: 90%;
+}
+section.register-section #Register-form-submit {
+  /* clear: left; */
   margin: 20px 0 0 230px;
+  width: 45%;
+  padding: 7px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: #3a3a3a;
+  cursor: pointer;
+  outline: none;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+  height: 37px;
   font-size: 18px;
 }
 
+.close-modal {
+  position: absolute;
+  top: 0;
+  right: 0.1rem;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
 p {
-  margin-left: 70px;
-  font-weight: bold;
+  font-size: 1.8rem;
+} */
+
+/* -------------------------- */
+/* CLASSES TO MAKE MODAL WORK */
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 30%;
+
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+section.aadhaar-card-number-header #aadhaar-number-UIAOILogo {
+  position: absolute;
+  left: 5px;
+  height: 70px;
+  top: 25px;
+  width: 300px;
+}
+section.aadhaar-card-number-header #aadhaar-number-flagLogo {
+  position: absolute;
+  width: 200px;
+  height: 70px;
+  left: 400px;
+  top: 25px;
+}
+section.aadhaar-card-number-body #aadhaar-card-number-upload-img {
+  margin-right: 30px;
+  position: absolute;
+  /* left: 10px; */
+  height: 120px;
+  width: 100px;
+  /* border: none;*/
+}
+.flex-container {
+  display: flex;
+  top: 150px;
+}
+
+.flex-child {
+  flex: 1;
+  /* border: 2px solid yellow; */
+  position: absolute;
+  left: 250px;
+  height: 200px;
+  top: 140px;
+  width: 360px;
+}
+
+.flex-child:first-child {
+  margin-right: 30px;
+  position: absolute;
+  left: 50px;
+  height: 120px;
+  width: 100px;
+  border: none;
+  top: 140px;
+  padding: 0;
 }
 
 /*
