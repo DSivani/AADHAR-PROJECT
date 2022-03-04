@@ -13,6 +13,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="CSS/style.css" />
+    <script defer src="registerScript.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
   </head>
 
   <body class="register-bgImage">
@@ -35,313 +37,416 @@
       </div>
     </header>
     <section class="register-section">
-      <div class="card">
-        <h1>Registration Form</h1>
-        <form class="register">
-          <table align="center">
-            <tr>
-              <td>
-                <label for="FullName"><b>Full Name : </b></label>
-              </td>
-              <td>
-                <table>
-                  <tr>
-                    <td>
-                      <label for="FirstName" class="firstlabel"
-                        ><b>First Name *</b></label
-                      >
-                    </td>
-                    <td>
-                      <label for="LastName" class="lastlabel"
-                        ><b>LastName *</b></label
-                      >
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input
-                        type="text"
-                        placeholder="Enter First Name Here.."
-                        class="register-firstname"
-                        required
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        placeholder="Enter Last Name Here.."
-                        class="register-lastname"
-                        required
-                      />
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
+      <div class="container">
+        <div class="register-form-container register-container">
+          <form action="#" class="register">
+            <br />
+            <h1>Registration Form</h1>
+            <br />
+            <table align="right">
+              <tr>
+                <td>
+                  <label for="FullName"><b>Full Name : </b></label>
+                </td>
+                <td>
+                  <table>
+                    <tr>
+                      <td>
+                        <label for="FirstName" class="firstlabel"
+                          ><b>First Name *</b></label
+                        >
+                      </td>
+                      <td>
+                        <label for="LastName" class="lastlabel"
+                          ><b>LastName *</b></label
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input
+                          type="text"
+                          placeholder="Enter First Name Here.."
+                          class="register-firstname"
+                          required
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          placeholder="Enter Last Name Here.."
+                          class="register-lastname"
+                          required
+                        />
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- <span id="msg" style="color: red"
+                    >Name should conatin only alphabets with maximum length
+                    30</span
+                  > -->
+                </td>
+              </tr>
 
-            <tr>
-              <td>
-                <label for="Gender"><b>Gender: </b></label>
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  id="Male"
-                  value="Male"
-                  class="register-gender"
-                  required
-                />
-                <label for="Gender"><b>Male </b></label>
-
-                <input
-                  type="radio"
-                  id="Female"
-                  value="Female"
-                  class="register-male"
-                  required
-                />
-                <label for="Gender"><b>Female </b></label>
-
-                <input
-                  type="radio"
-                  id="Others"
-                  value="Others"
-                  class="register-female"
-                  required
-                />
-                <label for="Gender"><b>Others </b></label>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <label for="DOB"><b>Date Of Birth : </b></label>
-              </td>
-              <td>
-                <input type="date" id="dob" name="dob" required />
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <label for="Phone Number"><b>Phone Number : </b></label>
-              </td>
-              <td>
-                <input type="number" class="register-number" required />
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <label for="Email"><b>Email Id : </b></label>
-              </td>
-              <td>
-                <input
-                  type="email"
-                  id="email"
-                  pattern=".+@.com"
-                  size="30"
-                  required
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="Password"><b>Create Password : </b></label>
-              </td>
-              <td>
-                <table>
-                  <tr>
-                    <td>
-                      <label for="password" class="passwordLabel"
-                        ><b>password *</b></label
-                      >
-                    </td>
-                    <td>
-                      <label for="ConfirmPassword" class="confirmPasswordLabel"
-                        ><b>Confirm Password *</b></label
-                      >
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input
-                        type="password"
-                        class="register-password"
-                        required
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="password"
-                        class="register-confirmpassword"
-                        required
-                      />
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="upload Photo"><b>Upload a Photo</b></label>
-              </td>
-              <td>
-                <input type="image" id="uploadPhoto" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="Relationship Details"
-                  ><b>Relationship Details : </b></label
-                >
-              </td>
-              <td>
-                <table>
-                  <tr>
-                    <td>
-                      <input
-                        type="radio"
-                        id="Father"
-                        value="Father"
-                        class="register-relationship-father"
-                        required
-                      />
-                    </td>
-                    <td>
-                      <label for="Father"><b>Father </b></label>
-                    </td>
-
-                    <td>
-                      <input
-                        type="radio"
-                        id="Mother"
-                        value="Mother"
-                        class="register-relationship-mother"
-                        required
-                      />
-                    </td>
-                    <td>
-                      <label for="Mother"><b>Mother </b></label>
-                    </td>
-
-                    <td>
-                      <input
-                        type="radio"
-                        id="Guardian"
-                        value="Guardian"
-                        class="register-relationship-guardian"
-                        required
-                      />
-                    </td>
-                    <td>
-                      <label for="Guardian"><b>Guardian </b></label>
-                    </td>
-
-                    <td>
-                      <input
-                        type="radio"
-                        id="Husband"
-                        value="Husband"
-                        class="register-relationship-husband"
-                        required
-                      />
-                    </td>
-                    <td>
-                      <label for="Husband"><b>Husband </b></label>
-                    </td>
-                  </tr>
-                </table>
-                <tr>
-                  <td>
-                    <label for="Name"><b>Relation Name : </b></label>
-                  </td>
-                  <td>
-                    <input
-                      type="text"
-                      placeholder="Name"
-                      class="register-name"
-                      required
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label for="AadhaarNo"><b>Relation Aadhaar No : </b></label>
-                  </td>
-                  <td>
-                    <input type="number" class="register-aadhaarno" required />
-                  </td>
-                </tr>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <label for="Address"><b>Address : </b></label>
-              </td>
-              <td>
-                <textarea rows="4" cols="55" name="address">
-          Enter Address...</textarea
-                >
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <label for="State"><b>State: </b></label>
-              </td>
-              <td>
-                <select name="State" id="State"></select>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="district"><b>District : </b></label>
-              </td>
-              <td>
-                <select name="district" id="district">
-                  <option value="Select">Select</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="City"><b>City : </b></label>
-              </td>
-              <td>
-                <select name="City" id="City">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="opel">Opel</option>
-                  <option value="audi">Audi</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="Pincode"><b>Pin Code : </b></label>
-              </td>
-              <td>
-                <input type="number" class="register-pincode" required />
-              </td>
-            </tr>
-            <!-- <tr>
-                <td></td>
+              <tr>
+                <td>
+                  <label for="Gender"><b>Gender: </b></label>
+                </td>
                 <td>
                   <input
-                    type="submit"
-                    value="Register"
-                    id="Register-form-submit"
+                    type="radio"
+                    name="gender"
+                    id="Male"
+                    value="Male"
+                    class="register-gender"
+                    required
+                  />
+                  <label for="Gender"><b>Male </b></label>
+
+                  <input
+                    type="radio"
+                    name="gender"
+                    id="Female"
+                    value="Female"
+                    class="register-male"
+                    required
+                  />
+                  <label for="Gender"><b>Female </b></label>
+
+                  <input
+                    type="radio"
+                    name="gender"
+                    id="Others"
+                    value="Others"
+                    class="register-female"
+                    required
+                  />
+                  <label for="Gender"><b>Others </b></label>
+                  <!-- <span id="msg1" style="color: red"
+                    >can select only one type</span
+                  > -->
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="DOB"><b>Date Of Birth : </b></label>
+                </td>
+                <td>
+                  <input
+                    type="date"
+                    value=""
+                    id="dob"
+                    name="dob"
+                    onkeydown="return false"
+                    required
+                  />
+                  <!-- <span id="msg2" style="color: red"> </span> -->
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="Phone Number"><b>Phone Number : </b></label>
+                </td>
+                <td>
+                  <input type="text" class="register-phone-number" required />
+                  <!-- <span id="msg3 err3" style="color: red"
+                    >Phone Numbers contains only 10 Digits</span
+                  > -->
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="Email"><b>Email Id : </b></label>
+                </td>
+                <td>
+                  <input type="text" id="email" required />
+                  <!-- <span id="msg4 err4" style="color: red"
+                    >Mail should be in abc@xyz.com Format</span
+                  > -->
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="Password"><b>Create Password : </b></label>
+                </td>
+                <td>
+                  <table>
+                    <tr>
+                      <td>
+                        <label for="password" class="passwordLabel"
+                          ><b>password *</b></label
+                        >
+                      </td>
+                      <td>
+                        <label
+                          for="ConfirmPassword"
+                          class="confirmPasswordLabel"
+                          ><b>Confirm Password *</b></label
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input
+                          type="password"
+                          class="register-password"
+                          required
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="password"
+                          class="register-confirmpassword"
+                          required
+                        />
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- <span id="msg5 err5" style="color: red"
+                    >Password should have special characters</span
+                  > -->
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="upload-photo"><b>Upload a Photo : </b></label>
+                </td>
+                <td>
+                  <div class="contentarea">
+                    <div class="camera">
+                      <video id="video" width="100%" height="100%"></video>
+                    </div>
+
+                    <div>
+                      <button id="take-photo-button">Take photo</button>
+                    </div>
+                    <div>
+                      <button id="start-camera-button">Start Camera</button>
+                    </div>
+                    <div>
+                      <button id="stop-camera-button">Stop camera</button>
+                    </div>
+                    <div><button id="retake-button">Retake Photo</button></div>
+
+                    <canvas id="canvas"></canvas>
+
+                    <div class="output">
+                      <img
+                        id="photo"
+                        alt="The screen capture will appear in this box."
+                        required
+                      />
+                    </div>
+                    <!-- <span id="msg6 err6" style="color: red"
+                      >Upload Photo for Aadhaar Card</span
+                    > -->
+                  </div>
+                </td>
+              </tr>
+              <tr class="relation-details">
+                <td>
+                  <label for="Relationship Details"
+                    ><b>Relationship Details : </b></label
+                  >
+                </td>
+                <td>
+                  <table>
+                    <tr>
+                      <td>
+                        <input
+                          type="radio"
+                          name="relation"
+                          id="Father"
+                          value="Father"
+                          class="register-relationship-father"
+                          required
+                        />
+                      </td>
+                      <td>
+                        <label for="Father"><b>Father </b></label>
+                      </td>
+
+                      <td>
+                        <input
+                          type="radio"
+                          name="relation"
+                          id="Mother"
+                          value="Mother"
+                          class="register-relationship-mother"
+                          required
+                        />
+                      </td>
+                      <td>
+                        <label for="Mother"><b>Mother </b></label>
+                      </td>
+
+                      <td>
+                        <input
+                          type="radio"
+                          name="relation"
+                          id="Guardian"
+                          value="Guardian"
+                          class="register-relationship-guardian"
+                          required
+                        />
+                      </td>
+                      <td>
+                        <label for="Guardian"><b>Guardian </b></label>
+                      </td>
+
+                      <td>
+                        <input
+                          type="radio"
+                          name="relation"
+                          id="Husband"
+                          value="Husband"
+                          class="register-relationship-husband"
+                          required
+                        />
+                      </td>
+                      <td>
+                        <label for="Husband"><b>Husband </b></label>
+                      </td>
+                    </tr>
+                    <!-- <span id="msg6" style="color: red"
+                      >Please select one of your parent Details</span
+                    > -->
+                  </table>
+                  <tr class="relation-details">
+                    <td>
+                      <label for="Name"><b>Relation Name : </b></label>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        placeholder="Name"
+                        name="relation"
+                        class="register-relation-name"
+                        required
+                      />
+                      <!-- <span id="msg7" style="color: red"
+                        >Please enter your parent Name</span
+                      > -->
+                    </td>
+                  </tr>
+                  <tr class="relation-details">
+                    <td>
+                      <label for="AadhaarNo"
+                        ><b>Relation Aadhaar No : </b></label
+                      >
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        name="relation"
+                        class="register-relation-aadhaarno"
+                        required
+                      />
+                      <!-- <span id="msg8" style="color: red"
+                        >Aadhaar Number contains 12 digits Only!!</span
+                      > -->
+                    </td>
+                  </tr>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="Address"><b>Address : </b></label>
+                </td>
+                <td>
+                  <textarea
+                    rows="4"
+                    cols="55"
+                    name="address"
+                    class="register-address"
+                    required
+                  >
+              Enter Address...</textarea
+                  >
+                  <!-- <span id="msg9 err9" style="color: red"
+                    >Enter your Address</span
+                  > -->
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="Pincode"><b>Pin Code : </b></label>
+                </td>
+                <td>
+                  <input type="text" class="register-pincode" required />
+                  <!-- <span id="msg10 err10" style="color: red"
+                    >Enter your pincode contains 6 digits!!</span
+                  > -->
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="State"><b>State: </b></label>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    id="state"
+                    class="register-state"
+                    required
                   />
                 </td>
               </tr>
-            </tr> -->
-          </table>
-          <input type="submit" value="Register" id="Register-form-submit" />
-        </form>
+
+              <tr>
+                <td>
+                  <label for="City"><b>City : </b></label>
+                </td>
+                <td>
+                  <input type="text" id="city" class="register-city" required />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="district"><b>District : </b></label>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    id="district"
+                    class="register-district"
+                    required
+                  />
+                </td>
+              </tr>
+            </table>
+            <input
+              type="submit"
+              value="Clear"
+              id="Register-form-clear-submit"
+              method="post"
+            />
+            <input
+              type="submit"
+              value="Register"
+              id="Register-form-submit"
+              method="post"
+            />
+          </form>
+        </div>
+        <div class="overlay-container">
+          <div class="background-overlay">
+            <div class="overlay-pannel overlay-left">
+              <h1>Welcome to myAadhaar For Registration</h1>
+              <p>Click on <b>Home</b> Button to explore myAadhaar Home Page</p>
+              <button class="Home">
+                <a href="index.html" class="HomeButtonLink">Home</a>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-    <script src="script.js"></script>
   </body>
 </html>
