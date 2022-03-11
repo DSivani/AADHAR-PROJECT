@@ -1,0 +1,716 @@
+header {
+  height: 80px;
+  background-color: white;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+header .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+/********** Login Form *******************/
+/********** Login Section --- Header *******************/
+header img {
+  width: 150px;
+  height: auto;
+}
+header .logo {
+  display: inline-block;
+  color: white;
+  font-size: 27px;
+}
+
+header nav {
+  display: inline-block;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+header nav ul li {
+  display: inline-block;
+}
+header nav ul li.HamburgerMenu-icon {
+  display: none;
+}
+header nav ul li.HamburgerMenu-icon img {
+  background-color: white;
+  vertical-align: middle;
+  width: 26px;
+  height: auto;
+}
+header nav ul li a {
+  color: black;
+  font-size: 15px;
+  letter-spacing: 0.37px;
+  margin-right: 24px;
+  text-decoration: none;
+}
+header nav ul li a:hover {
+  color: #3e50e5;
+}
+header nav ul li:last-of-type a {
+  margin-right: 0;
+}
+/********** Login Section --- Body *******************/
+
+section.login-section {
+  position: relative;
+  top: 75px;
+
+  /* display: none; */
+}
+section.login-section img {
+  width: 100%;
+  height: 650px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  margin-top: 8px;
+  margin-bottom: 32px;
+}
+section.login-section .login-section-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+section.login-section .login-section-container {
+  max-width: 1170px;
+  padding: 0 32px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto;
+}
+section.login-section .login-section-text {
+  width: 50%;
+  margin: auto 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+}
+
+section.login-section .login-section-heading {
+  width: 50%;
+  margin: auto 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+  color: #fff;
+  font-size: 60px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 58px;
+  margin-bottom: 28px;
+}
+section.login-section .login-section-heading-bold {
+  font-weight: 600;
+}
+section.login-section .login-section-desc {
+  max-width: 518px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 25px;
+  margin-top: 0;
+  margin-bottom: 21px;
+  padding: 0;
+  text-align: left;
+}
+
+section.login-section .login-section-form {
+  position: relative;
+  height: 450px;
+  width: 400px;
+  top: 0;
+  left: 0;
+  transform: none;
+  padding: 50px;
+  margin-top: 150px;
+}
+section.login-section #main-holder {
+  width: 80%;
+  height: 70%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: 0px 0px 5px 2px black;
+}
+section.login-section #login-error-msg-holder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+section.login-section #login-error-msg {
+  width: 90%;
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  opacity: 0;
+}
+
+section.login-section #login-form {
+  align-self: flex-start;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 222px;
+}
+
+section.login-section .login-form-field::placeholder {
+  color: #3a3a3a;
+}
+
+section.login-section .login-form-field {
+  border: none;
+  border-bottom: 1px solid #3a3a3a;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  outline: none;
+  padding: 0px 0px 5px 5px;
+  font-weight: bold;
+}
+
+section.login-section #login-form-submit {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: #3a3a3a;
+  cursor: pointer;
+  outline: none;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+  height: 37px;
+  font-size: 18px;
+}
+/* -------------------------- */
+/* CLASSES TO MAKE MODAL WORK */
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 30%;
+
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+.close-modal {
+  position: absolute;
+  top: 0;
+  right: 0.1rem;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+/********** Login Section --- Display Aadhaar Card Details *******************/
+section.aadhaar-card-number-header #aadhaar-number-UIAOILogo {
+  position: absolute;
+  left: 5px;
+  height: 70px;
+  top: 25px;
+  width: 300px;
+}
+section.aadhaar-card-number-header #aadhaar-number-flagLogo {
+  position: absolute;
+  width: 200px;
+  height: 70px;
+  left: 400px;
+  top: 25px;
+}
+/* section.aadhaar-card-number-body #aadhaar-card-number-upload-img {
+  margin-right: 30px;
+  position: absolute;
+  
+  height: 120px;
+  width: 100px;
+  
+} */
+.aadhaar-card-number-body {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  width: 120%;
+}
+.flex-container {
+  display: flex;
+  top: 150px;
+}
+
+.flex-child {
+  flex: 1;
+  /* border: 2px solid yellow; */
+  position: absolute;
+  left: 250px;
+  height: 200px;
+  top: 140px;
+  /* width: 360px; */
+}
+
+.flex-child:first-child {
+  margin-right: 30px;
+  position: absolute;
+  left: 50px;
+  height: 120px;
+  width: 100px;
+  border: none;
+  top: 140px;
+  padding: 0;
+}
+.login-aadhaarCardDisplay-form table {
+  position: absolute;
+  width: 50%;
+}
+.login-aadhaarCardDisplay-form input {
+  border: none;
+  font-size: medium;
+}
+/********** Register Form *******************/
+
+/*************** REGISTER SECTION --- HEADER ***/
+.register-bgImage body {
+  background-color: #f6f5f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+header #logo-UIAOI {
+  width: 300px;
+  height: 80px;
+}
+header #logo-aadhaar {
+  position: absolute;
+  right: 2px;
+  width: 150px;
+  height: auto;
+}
+/*************** REGISTER SECTION --- BODY ***/
+section.register-section {
+  position: relative;
+  margin-top: 92px;
+}
+section.register-section .register-section-body-container {
+  background-color: #fff;
+  border-radius: 10px;
+  top: 1px;
+  width: 1340px;
+  max-width: 100%;
+  min-height: 1325px;
+  max-height: 100%;
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  padding: 0 16px;
+  box-shadow: 0px 14px 28px rgba(0, 0, 0, 0.25),
+    0px 10px 10px rgba(0, 0, 0, 0.22);
+}
+/************ Adding Image in container with text *****/
+section.register-section .register-section-overlay-container {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+section.register-section .register-section-background-overlay {
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: white;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 70%;
+  transform: translateX(0);
+}
+section.register-section .register-section-overlay-pannel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0px 40px;
+  text-align: center;
+  left: 75px;
+  top: -250px;
+  height: 100%;
+  width: 100%;
+  transform: translateX(0);
+}
+section.register-section .register-section-overlay-left {
+  transform: translateX(-20%);
+}
+section.register-section .register-section-overlay-pannel button:active {
+  transform: scale(0.95);
+}
+section.register-section .register-section-overlay-pannel button.Home {
+  background-color: transparent;
+  border-color: white;
+  border-radius: 10px;
+  width: 30%;
+  height: 6%;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+section.register-section
+  .register-section-overlay-pannel
+  button.Home
+  a.HomeButtonLink {
+  text-decoration: none;
+  color: #fff;
+}
+section.register-section .register-section-overlay-pannel h1 {
+  font-weight: bold;
+  font-size: 35px;
+}
+section.register-section .register-section-overlay-pannel p {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 25px;
+  margin: 20px 0 30px;
+  text-align: center;
+}
+
+/********* Creating registration form ***************/
+section.register-section .register-form-container {
+  position: absolute;
+  top: 0%;
+  left: 40%;
+  height: 100%;
+}
+section.register-section .register-form-container h1 {
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+section.register-section .register-table {
+  width: 150%;
+}
+section.register-section .register-sub-table {
+  width: 70%;
+}
+/* .relation-details {
+    display: none;
+  } */
+.hidden {
+  display: none;
+}
+.msg {
+  color: red;
+}
+/* input {
+  border: 2px solid rgb(25, 176, 220);
+  border-radius: 4px;
+}
+input[type="radio"] {
+  background-color: skyblue;
+}
+input :focus {
+  box-shadow: 180px 227px 0 200px lightgrey, 180px 195px 0 200px blue;
+} */
+input {
+  border: 2px solid rgb(10, 12, 12);
+  border-radius: 4px;
+}
+input:focus {
+  outline: 2px solid rgb(2, 176, 220);
+  border: none;
+}
+input:focus:invalid {
+  outline: 2px solid rgb(206, 18, 18);
+  border: none;
+}
+/****** Register and Clear Buttons ************/
+
+section.register-section #Register-form-submit {
+  margin: 20px 0 0 270px;
+  width: 25%;
+  padding: 7px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: #3a3a3a;
+  cursor: pointer;
+  outline: none;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+  height: 37px;
+  font-size: 18px;
+}
+section.register-section #Register-form-clear-submit {
+  margin: 20px 0 0 15px;
+  width: 20%;
+  padding: 7px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: #3a3a3a;
+  cursor: pointer;
+  outline: none;
+  height: 37px;
+  font-size: 18px;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+}
+
+/*********************** Register Success Message ********************/
+.register-modal {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  height: 2%;
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+.register-success-message {
+  color: palegreen;
+  border: none;
+}
+
+/****************** Upload photo ***********************/
+#video {
+  display: none;
+  border: 1px solid black;
+  width: 150px;
+  height: 165px;
+  position: relative;
+  left: -80px;
+  top: 20px;
+}
+
+#photo {
+  display: none;
+  border: 1px solid black;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  /* left: 50px; */
+}
+
+#canvas {
+  display: none;
+}
+
+.camera {
+  width: 340px;
+  display: inline-block;
+}
+
+.output {
+  position: relative;
+  height: 195px;
+  left: 320px;
+  top: -92px;
+  display: block;
+}
+.output img {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  left: -250px;
+  top: 92px;
+}
+
+#take-photo-button {
+  display: none;
+  position: absolute;
+  /* margin-left: auto;
+      margin-right: auto; */
+  text-align: center;
+  left: 285px;
+  top: 540px;
+  /* bottom: 36px; */
+  padding: 4px;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+
+.contentarea {
+  font-size: 16px;
+  font-family: Arial;
+  text-align: center;
+  height: 230px;
+}
+#stop-camera-button {
+  display: none;
+  position: absolute;
+  left: 280px;
+  top: 570px;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+
+#start-camera-button {
+  position: absolute;
+  left: 320px;
+  top: 580px;
+  border-radius: 6px;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+#retake-button {
+  display: none;
+  position: absolute;
+  left: 295px;
+  top: 570px;
+  border-radius: 6px;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+
+/*
+      ******************************CSS MEDIA QUERIES**********************
+      */
+
+/* Start of Design for small Desktops */
+
+@media screen and (max-width: 1440px) {
+  .container {
+    width: 1180px;
+  }
+  body {
+    padding-top: 70px;
+  }
+  header {
+    height: 70px;
+  }
+}
+/* End of Design for small Desktops */
+
+/* Start of design for Tablets */
+@media screen and (max-width: 960px) {
+  .container {
+    max-width: 92%;
+  }
+  header .logo {
+    font-size: 24px;
+  }
+  header nav ul li {
+    display: none;
+  }
+  header nav ul li.HamburgerMenu-icon {
+    display: inline-block;
+  }
+}
+/* End of design for Tablets */
+
+/* Start of design for Mobiles */
+@media screen and (max-width: 576px) {
+  header .logo {
+    font-size: 18px;
+  }
+  header .logo .blue-dot {
+    width: 7px;
+    height: 7px;
+  }
+}
+/* End of design for Mobiles */
