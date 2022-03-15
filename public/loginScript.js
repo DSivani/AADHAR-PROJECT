@@ -27,6 +27,7 @@ const loginAadhaarCardForm = document.querySelector(
 
 let username, password;
 function openModal() {
+  console.log("open modal");
   modal.classList.remove("hidden");
   overlay.classList.remove("hidden"); // to add blur
 }
@@ -38,7 +39,7 @@ function closeModal() {
 
 loginButton.addEventListener("click", (e) => {
   e.preventDefault();
-
+  console.log("login");
   if (!loginUserNameField.value || !passwordField.value) {
     loginErrorMsg.style.opacity = 1;
   } else {
@@ -54,14 +55,14 @@ const getUserNameAndPassword = async (userName, userPassword) => {
   try {
     // Get information about the user name and address
     const req = await fetch(
-      `http://localhost:4500/login/${userName}/${userPassword}`
+      `http://localhost:5000/login/${userName}/${userPassword}`
     );
 
     const res = await req.json();
     console.log(res);
     if (res.length === 0) {
       alert(
-        "No Data Found with that username/password. Please check Your Details Once!!"
+        "No data found with that username/password. Please check your details once!!"
       );
     } else {
       let getUserLoginData = res[0];

@@ -12,453 +12,380 @@
       href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="CSS/style.css" />
     <script defer src="registerScript.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
   </head>
 
   <body class="register-bgImage">
+    <!-- Register Section Header -->
     <header>
       <div class="header-container">
-        <section class="register-header-logo">
-          <img
-            src="Images/Unique-identification-Authority-of-India.jpg"
-            alt="Unique-identification-Authority-of-India"
-            id="logo-UIAOI"
-          />
-          <a href="index.html">
-            <img
-              src="Images/Aadhaar-Card-Logo.jpg"
-              alt="Aadhar Image"
-              id="logo-aadhaar"
-            />
-          </a>
+        <section class="logo">
+          <img src="Images/Aadhaar-Card-Logo.jpg" alt="Aadhar Image" />
         </section>
+        <nav>
+          <ul>
+            <li><a href="index.html">Sign In</a></li>
+            <li class="HamburgerMenu-icon">
+              <img src="Images/HamburgerMenu.png" alt="HamburgerMenu-icon" />
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
+    <!-- Register Section Body -->
     <section class="register-section">
-      <div class="register-section-body-container">
-        <!-- adding image with text -->
-        <div class="register-section-overlay-container">
-          <div class="register-section-background-overlay">
-            <div class="register-section-overlay-pannel register-section-overlay-left">
-              <h1>Welcome to myAadhaar For Registration</h1>
-              <p>Click on <b>Home</b> Button to explore myAadhaar Home Page</p>
-              <button class="Home">
-                <a href="index.html" class="HomeButtonLink">Home</a>
-              </button>
+      <div class="register-section-container">
+        <div class="register-section-title">Registration</div>
+        <div class="register-section-content">
+          <!-- Register Forms -->
+          <form action="#" class="register">
+            <!-- Full Name -->
+            <div class="register-section-user-details">
+              <!-- First Name -->
+              <div class="register-section-input-box">
+                <span class="user-details">First Name *</span>
+                <input
+                  type="text"
+                  placeholder="Enter your first name"
+                  class="register-firstname"
+                  required
+                />
+                <span class="msg"></span>
+              </div>
+              <!-- Last Name -->
+              <div class="register-section-input-box">
+                <span class="user-details">Last Name *</span>
+                <input
+                  type="text"
+                  placeholder="Enter your last name"
+                  class="register-lastname"
+                  required
+                />
+              </div>
             </div>
-          </div>
-        </div>
-        <!-- craeting registration form table -->
-        <div class="register-form-container register-container">
-          <form class="register">
-            <br>
-            <h1>Registration Form</h1>
-            <br>
-            <table class="register-table" border="1">
-              <!-- Fullname -->
-              <tr>
-                <td>
-                  <label for="FullName"><b>Full Name : </b></label>
-                </td>
-                <td>
-                  <table class="register-sub-table">
-                    <tr>
-                      <td>
-                        <label for="FirstName" class="firstlabel"
-                          ><b>First Name *</b></label
-                        >
-                      </td>
-                      <td>
-                        <label for="LastName" class="lastlabel"
-                          ><b>LastName *</b></label
-                        >
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <input
-                          type="text"
-                          placeholder="Enter First Name Here.."
-                          class="register-firstname"
-                          required
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          placeholder="Enter Last Name Here.."
-                          class="register-lastname"
-                          required
-                        />
-                      </td>
-                    </tr>
-                  </table>
-                  
-                  <span class="msg"></span>
-                </td>
-              </tr>
-              <!-- Gender -->
-              <tr>
-                <td>
-                  <label for="Gender"><b>Gender: *</b></label>
-                </td>
-                <td>
-                  <br>
-                  <input
-                    type="radio"
-                    name="gender"
-                    id="Male"
-                    value="Male"
-                    class="register-gender"
-                    required
-                  />
-                  <label for="Gender"><b>Male </b></label>
-
-                  <input
-                    type="radio"
-                    name="gender"
-                    id="Female"
-                    value="Female"
-                    class="register-male"
-                    required
-                  />
-                  <label for="Gender"><b>Female </b></label>
-
-                  <input
-                    type="radio"
-                    name="gender"
-                    id="Others"
-                    value="Others"
-                    class="register-female"
-                    required
-                  />
-                  <label for="Gender"><b>Others </b></label><br>
-                  <span class="msg"></span>
-                </td>
-              </tr>
-               <!-- Date Of Birth -->
-               <tr>
-                <td>
-                  <label for="DOB"><b>Date Of Birth : *</b></label>
-                </td>
-                <td>
-                  <br>
-                  <input
-                    type="date"
-                    value=""
-                    id="dob"
-                    name="dob"
-                    onkeydown="return false"
-                    required
-                  />
-                  <br>
-                  <span class="msg"></span>
-                </td>
-              </tr>
-              <!-- Phone number -->
-              <tr>
-                <td>
-                  <label for="Phone Number"><b>Phone Number : *</b></label>
-                </td>
-                <td>
-                  <br>
-                  <input type="text" class="register-phone-number" placeholder="Enter Phone Number of 10 digits" required />
-                  <br>
-                  <span class="msg"></span>
-                </td>
-              </tr>
+            <!-- Gender -->
+            <div class="gender-details">
+              <input
+                type="radio"
+                name="gender"
+                value="Male"
+                id="Male"
+                required
+              />
+              <input
+                type="radio"
+                name="gender"
+                value="Female"
+                id="Female"
+                required
+              />
+              <input
+                type="radio"
+                name="gender"
+                value="Others"
+                id="Others"
+                required
+              />
+              <span class="gender-title">Gender *</span>
+              <div class="gender-category">
+                <label for="Male">
+                  <span class="dot one"></span>
+                  <span class="gender">Male</span>
+                </label>
+                <label for="Female">
+                  <span class="dot two"></span>
+                  <span class="gender">Female</span>
+                </label>
+                <label for="Others">
+                  <span class="dot three"></span>
+                  <span class="gender">Others</span>
+                </label>
+              </div>
+              <span class="msg"></span>
+            </div>
+            <!-- Date Of Birth -->
+            <div class="register-section-user-details">
+              <div class="register-section-input-box">
+                <span class="user-details">Date of Birth *</span>
+                <input
+                  type="date"
+                  value=""
+                  id="dob"
+                  name="dob"
+                  onkeydown="return false"
+                  required
+                />
+              </div>
+              <span class="msg"></span>
+            </div>
+            <!-- Phone Number, Email, Password, Confirm password -->
+            <div class="register-section-user-details">
+              <!-- Phone Number -->
+              <div class="register-section-input-box">
+                <span class="user-details">Phone Number *</span>
+                <input
+                  type="text"
+                  placeholder="Enter your phone number"
+                  class="register-phone-number"
+                  required
+                />
+                <span class="msg"></span>
+              </div>
               <!-- Email Id -->
-              <tr>
-                <td>
-                  <label for="Email"><b>Email Id : *</b></label>
-                </td>
-                <td>
-                  <br>
-                  <input type="text" id="email" placeholder="Enter Email in abc@example.com Format"required /><br>
-                  <span class="msg"></span>
-                </td>
-              </tr>
+              <div class="register-section-input-box">
+                <span class="user-details">Email *</span>
+                <input
+                  type="text"
+                  placeholder="Enter your email"
+                  id="email"
+                  required
+                />
+                <span class="msg"></span>
+              </div>
               <!-- Password -->
-              <tr>
-                
-                <td>
-                  <label for="Password"><b>Create Password : </b></label>
-                </td>
-                <td>
-                  <table class="register-sub-table">
-                    <tr>
-                      <td>
-                        <br>
-                        <label for="password" class="passwordLabel"><b>password *</b></label>
-                      </td>
-                      <td>
-                        <label for="ConfirmPassword" class="confirmPasswordLabel"><b>Confirm Password *</b></label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        
-                        <input
-                          type="password"
-                          class="register-password"
-                          placeholder="Enter Password Here"
-                          required
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="password"
-                          class="register-confirmpassword"
-                          placeholder="Re-Enter Password Here"
-                          required
-                        />
-                      </td>
-                    </tr>
-                  </table>
-                  <span class="msg"></span>
-                </td>
-              </tr>
-              <!-- Upload Photo -->
-              <tr>
-                <td>
-                  <label for="upload-photo"><b>Upload a Photo : </b></label>
-                </td>
-                <td>
-                  <div class="contentarea">
-                    <div class="camera">
-                      <video id="video" width="100%" height="100%"></video>
-                    </div>
-
-                    <div>
-                      <button id="take-photo-button">Take photo</button>
-                    </div>
-                    <div>
-                      <button id="start-camera-button">Start Camera</button>
-                    </div>
-                    <div>
-                      <button id="stop-camera-button">Stop camera</button>
-                    </div>
-                    <div><button id="retake-button">Retake Photo</button></div>
-
-                    <canvas id="canvas"></canvas>
-
-                    <div class="output">
-                      <img
-                        id="photo"
-                        alt="The screen capture will appear in this box."
-                        required
-                      />
-                    </div>
-                    
+              <div class="register-section-input-box">
+                <span class="user-details">Password *</span>
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  class="register-password"
+                  required
+                />
+                <span class="msg"></span>
+              </div>
+              <!-- Confirm Password -->
+              <div class="register-section-input-box">
+                <span class="user-details">Confirm Password *</span>
+                <input
+                  type="password"
+                  placeholder="Confirm your password"
+                  class="register-confirmpassword"
+                  required
+                />
+              </div>
+            </div>
+            <!-- Upload a photo -->
+            <div class="register-section-user-details">
+              <div class="register-section-input-box">
+                <span class="user-details">Upload a Photo *</span>
+                <div class="contentarea">
+                  <div class="camera">
+                    <video id="video" width="100%" height="100%"></video>
                   </div>
-                  <span class="msg" style="color: black">Upload Photo for Aadhaar Card</span>
-                </td>
-              </tr>
-              <!-- User Relation details -->
-              <tr class="relation-details hidden">
-                <td>
-                  <label for="Relationship Details"><b>Relation Details:*</b></label>
-                </td>
-                <td>
-                  <br>
-                  <table>
-                    <tr>
-                      <td>
-                        <input
-                          type="radio"
-                          name="relation"
-                          id="Father"
-                          value="Father"
-                          class="register-relationship-father"
-                          required
-                        />
-                      </td>
-                      <td>
-                        <label for="Father"><b>Father </b></label>
-                      </td>
 
-                      <td>
-                        <input
-                          type="radio"
-                          name="relation"
-                          id="Mother"
-                          value="Mother"
-                          class="register-relationship-mother"
-                          required
-                        />
-                      </td>
-                      <td>
-                        <label for="Mother"><b>Mother </b></label>
-                      </td>
+                  <div>
+                    <button id="take-photo-button">Take photo</button>
+                  </div>
+                  <div>
+                    <button id="start-camera-button">Start Camera</button>
+                  </div>
+                  <div>
+                    <button id="stop-camera-button">Stop camera</button>
+                  </div>
+                  <div><button id="retake-button">Retake Photo</button></div>
 
-                      <td>
-                        <input
-                          type="radio"
-                          name="relation"
-                          id="Guardian"
-                          value="Guardian"
-                          class="register-relationship-guardian"
-                          required
-                        />
-                      </td>
-                      <td>
-                        <label for="Guardian"><b>Guardian </b></label>
-                      </td>
+                  <canvas id="canvas"></canvas>
 
-                      <td>
-                        <input
-                          type="radio"
-                          name="relation"
-                          id="Husband"
-                          value="Husband"
-                          class="register-relationship-husband"
-                          required
-                        />
-                      </td>
-                      <td>
-                        <label for="Husband"><b>Husband </b></label>
-                      </td>
-                    </tr>
-                  </table>
-                  <span class="msg"></span>
-                </td>
-               
-              </tr>
-              <!-- User Relation Name -->
-              <tr class="relation-details hidden">
-                <td>
-                  <label for="Name"><b>Relation Name : *</b></label>
-                </td>
-                <td>
-                  <br>
+                  <div class="output">
+                    <img
+                      id="photo"
+                      alt="The screen capture will appear in this box."
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- User Relation Gender -->
+            <div class="relation-details hidden">
+              <div class="gender-details">
+                <input
+                  type="radio"
+                  name="relationGender"
+                  id="Father"
+                  value="Father"
+                  class="register-relationship-father"
+                  required
+                />
+                <input
+                  type="radio"
+                  name="relationGender"
+                  id="Mother"
+                  value="Mother"
+                  class="register-relationship-mother"
+                  required
+                />
+                <input
+                  type="radio"
+                  name="relationGender"
+                  id="Guardian"
+                  value="Guardian"
+                  class="register-relationship-guardian"
+                  required
+                />
+                <input
+                  type="radio"
+                  name="relationGender"
+                  id="Husband"
+                  value="Husband"
+                  class="register-relationship-husband"
+                  required
+                />
+                <span class="gender-title">Relation Details *</span>
+                <div class="gender-category">
+                  <label for="Father">
+                    <span class="dot one"></span>
+                    <span class="gender">Father</span>
+                  </label>
+                  <label for="Mother">
+                    <span class="dot two"></span>
+                    <span class="gender">Mother</span>
+                  </label>
+                  <label for="Guardian">
+                    <span class="dot three"></span>
+                    <span class="gender">Guardian</span>
+                  </label>
+                  <label for="Husband">
+                    <span class="dot four"></span>
+                    <span class="gender">Husband</span>
+                  </label>
+                </div>
+                <span class="msg"></span>
+              </div>
+            </div>
+            <!-- User Relation Name & User Relation Aadhaar Number -->
+            <div class="relation-details hidden">
+              <div class="register-section-user-details">
+                <!-- User Relation Name -->
+                <div class="register-section-input-box">
+                  <span class="user-details">Relation Name *</span>
                   <input
                     type="text"
-                    placeholder="Enter Relation Name"
-                    name="relation"
+                    placeholder="Enter your relation name"
                     class="register-relation-name"
                     required
-                  /><br>
+                  />
                   <span class="msg"></span>
-
-                </td>
-              </tr>
-              <!-- User Relation Aadhaar Number -->
-              <tr class="relation-details hidden">
-                <td>
-                  <label for="AadhaarNo"><b>Relation Aadhaar<br>Number : *</b></label>
-                </td>
-                <td>
-                  <br>
+                </div>
+                <!-- User Relation Aadhaar Number -->
+                <div class="register-section-input-box">
+                  <span class="user-details">Relation Aadhaar Number *</span>
                   <input
                     type="text"
-                    name="relation"
+                    placeholder="Enter your relation aadhaar number"
                     class="register-relation-aadhaarno"
-                    placeholder="Enter Relation Aadhaar Number"
                     required
-                  /><br>
+                  />
                   <span class="msg"></span>
-                </td>
-              </tr>
-              <!-- Address -->
-              <tr>
-                <td>
-                  <label for="Address"><b>Address : </b></label>
-                </td>
-                <td>
-                  <br>
-                  <textarea
-                    rows="4"
-                    cols="50"
-                    name="address"
-                    class="register-address"
-                    required >
-                  </textarea><br>
-                  <span class="msg"></span>
-                </td>
-              </tr>
-                <!-- Pincode -->
-                <tr>
-                  <td>
-                    <label for="Pincode"><b>Pin Code : </b></label>
-                  </td>
-                  <td>
-                    <br>
-                    <input type="text" class="register-pincode" placeholder="Enter Pincode of 6 Digits.." required /><br>
-                    <span class="msg"></span>
-                  </td>
-                </tr>
-                <!-- State -->
-                <tr>
-                  <td>
-                    <label for="State"><b>State: </b></label>
-                  </td>
-                  <td>
-                    <br>
-                    <input
-                      type="text"
-                      id="state"
-                      class="register-state"
-                      required
-                    />
-                  </td>
-                </tr>
-                <!-- City -->
-                <tr>
-                  <td>
-                    <label for="City"><b>City : </b></label>
-                  </td>
-                  <td>
-                    <br>
-                    <input type="text" id="city" class="register-city" required />
-                  </td>
-                </tr>
-                <!-- District -->
-                <tr>
-                  <td>
-                    <label for="district"><b>District : </b></label>
-                  </td>
-                  <td>
-                    <br>
-                    <input
-                      type="text"
-                      id="district"
-                      class="register-district"
-                      required
-                    />
-                  </td>
-                </tr>
-            </table>
-
-           
+                </div>
+              </div>
+            </div>
+            <!-- Address -->
+            <div class="register-section-user-details">
+              <div class="register-section-input-box">
+                <span class="user-details">Address *</span>
+                <textarea
+                  rows="4"
+                  cols="50"
+                  name="address"
+                  class="register-address"
+                  required
+                >
+                </textarea>
+                <span class="msg"></span>
+              </div>
+            </div>
+            <!-- Pincode & State -->
+            <div class="register-section-user-details">
+              <!-- Pincode -->
+              <div class="register-section-input-box">
+                <span class="user-details">Pincode *</span>
+                <input
+                  type="text"
+                  placeholder="Enter your pincode"
+                  class="register-pincode"
+                  required
+                />
+                <span class="msg"></span>
+              </div>
+              <!-- State -->
+              <div class="register-section-input-box">
+                <span class="user-details">State *</span>
+                <input
+                  type="text"
+                  placeholder="Enter your state"
+                  class="register-state"
+                  required
+                />
+              </div>
+            </div>
+            <!-- City & District -->
+            <div class="register-section-user-details">
+              <!-- City -->
+              <div class="register-section-input-box">
+                <span class="user-details">City *</span>
+                <input
+                  type="text"
+                  placeholder="Enter your city"
+                  class="register-city"
+                  required
+                />
+              </div>
+              <!-- District -->
+              <div class="register-section-input-box">
+                <span class="user-details">District *</span>
+                <input
+                  type="text"
+                  placeholder="Enter your district"
+                  class="register-district"
+                  required
+                />
+              </div>
+            </div>
 
             <!-- Register Button -->
-            <input
-            type="submit"
-            value="Clear"
-            id="Register-form-clear-submit"
-            method="post" />
-            <!-- Clear Button -->
-          <input
-            type="submit"
-            value="Register"
-            id="Register-form-submit"
-            method="post"
-          />
+            <div class="register-section-register-clear-button">
+              <input
+                type="submit"
+                value="Clear"
+                id="Register-form-clear-submit"
+                method="post"
+              />
+            </div>
+            <!-- Register clear Buttons -->
+            <div class="register-section-register-button">
+              <input
+                type="submit"
+                value="Register"
+                id="Register-form-submit"
+                method="post"
+              />
+            </div>
           </form>
         </div>
       </div>
+      <!-- Success Message User Validate Message Modal  -->
+      <div class="register-success-modal hidden">
+        <div id="register-success-modal-header">
+          <i class="fa fa-check"></i>
+          <h3 id="status">Success</h3>
+        </div>
+
+        <div id="register-success-modal-content">
+          <p id="register-success-modal-message">
+            You have successfully registered. Check your email for more
+            detials😊😊.
+          </p>
+          <a href="#" id="register-success-modal-btnOk">Ok</a>
+        </div>
       </div>
-       <!-- Success Message Multiple User Validate Message Modal  -->
-     <div class="register-modal hidden">
-      <button class="close-modal">&times;</button>
-      <section class="register-message">
-        <input type="text" class="register-success-message" />
-      </section>
-    </div>
-    <div class="overlay hidden"></div>
+      <div class="register-success-modal-overlay hidden"></div>
     </section>
-    
   </body>
 </html>

@@ -5,24 +5,27 @@ const registerBtn = document.querySelector("#Register-form-submit");
 const clearBtn = document.querySelector("#Register-form-clear-submit");
 const firstName = document.querySelector(".register-firstname");
 const lastName = document.querySelector(".register-lastname");
-const gender = document.getElementsByName("gender");
-const genderField = document.querySelector(".register-gender");
+const gender = document.querySelectorAll('input[name="gender"]');
 const dob = document.querySelector("#dob");
 const pinCode = document.querySelector(".register-pincode");
 const phoneNumber = document.querySelector(".register-phone-number");
 const email = document.querySelector("#email");
 const password = document.querySelector(".register-password");
 const confirmPassword = document.querySelector(".register-confirmpassword");
+const address = document.querySelector(".register-address");
+const relationGender = document.querySelectorAll(
+  'input[name="relationGender"]'
+);
 const relationName = document.querySelector(".register-relation-name");
 const relation = document.getElementsByName("relation");
 const relationDetails = document.querySelectorAll(".relation-details");
-const address = document.querySelector(".register-address");
+
 const relationAadhaarNumber = document.querySelector(
   ".register-relation-aadhaarno"
 );
-const registerForm = document.querySelector(".register");
 const pic = document.querySelector("#photo");
 
+const registerForm = document.querySelector(".register");
 const message = document.querySelectorAll(".msg");
 
 /** state city pincode */
@@ -31,24 +34,29 @@ State = document.querySelector(".register-state");
 City = document.querySelector(".register-city");
 District = document.querySelector(".register-district");
 
+/** Declaring the status variables */
+let checkStatus = true,
+  genderCheckStatus = true;
+
 /** Register success message modal */
-const successModal = document.querySelector(".register-modal");
+const registerSuccessModal = document.querySelector(".register-success-modal");
 const hidden = document.querySelectorAll(".hidden");
-const registerOverlay = document.querySelector(".overlay");
-const close_modal = document.querySelector(".close-modal");
-const registerMessage = document.querySelector(".register-success-message");
+const registerSuccessOverlay = document.querySelector(
+  ".register-success-modal-overlay"
+);
+const close_modal = document.querySelector("#register-success-modal-btnOk");
 
 function openModal() {
-  successModal.classList.remove("hidden");
-  registerOverlay.classList.remove("hidden"); // to add blur
+  console.log("modal open");
+  registerSuccessModal.classList.remove("hidden");
+  registerSuccessOverlay.classList.remove("hidden"); // to add blur
 }
 //for close button
 function closeModal() {
-  successModal.classList.add("hidden");
-  registerOverlay.classList.add("hidden");
+  registerSuccessModal.classList.add("hidden");
+  registerSuccessOverlay.classList.add("hidden");
 }
-
-// upload photo
+/** upload photo */
 let video = document.getElementById("video");
 let canvas = document.getElementById("canvas");
 let photo = document.getElementById("photo");
@@ -106,12 +114,12 @@ const saveDataToSQL = async (
 
   const content = await rawResponse.json();
 
-  //clear form values
+  /** clear form values */
   clear();
 };
 
 /** Declaring Global Variables */
-let checkStatus = true;
+
 let fullNameValue,
   genderValue,
   userDOB,
@@ -142,70 +150,38 @@ let fullNameRegEx = /^[A-Za-z_ ]+$/;
 registerBtn.addEventListener("click", registration.bind(this));
 clearBtn.addEventListener("click", clear);
 
-/** Calling all the valaidations */
+/** Calling all the validations */
 function registration(ev) {
   ev.preventDefault();
   nameValidate();
-  getSelectedGenderValue();
+  genderValidate();
   phoneNumberValidate();
   emailValidate();
   passwordValidate();
-  addressValidate();
-  if (
-    !firstName.value ||
-    !lastName.value ||
-    !genderField.value ||
-    !dob.value ||
-    !phoneNumber.value ||
-    !email.value ||
-    !password.value ||
-    !confirmPassword.value ||
-    !address.value
-    // !pinCode.value
-  ) {
-    alert("Please fill all the input fields!!");
+  if (!dob.value) {
+    alert("Please select your DOB");
   } else {
     if (userAge < 18) {
       validateRelationGender();
       validateRelationName();
       validateRelationAadhaarNumber();
       getParentAadhaarNumber(userRelationAadhaarNumber, userRelationName);
-      // if (relationName.value && relationAadhaarNumber.value) {
-      //getUserNameAndAddress(fullNameValue, phoneNumberValue);
-      if (checkStatus === false) {
-        alert("please enter all fields correctly!!");
-      } else {
-        getUserNameAndAddress(emailValue);
-        // randomUniqueAadhaarNumber(999999999999, 1);
-        // sendDataToSQL();
-        checkStatus = true;
-      }
-      // } else {
-      //   alert("Please fill all the input fields!!");
-      // }
+      validateStatus();
     } else if (userAge > 18) {
-      //console.log("age>18");
+      addressValidate();
       pincodeValidate();
-      //console.log("aftervalidatepin");
       address.readOnly = false;
       pinCode.readOnly = false;
-      if (checkStatus === false) {
-        alert("please enter all fields correctly!!");
-      } else {
-        getUserNameAndAddress(emailValue);
-        // randomUniqueAadhaarNumber(999999999999, 1);
-        // sendDataToSQL();
-        checkStatus = true;
-      }
+      validateStatus();
     }
   }
 }
 
 /** Name Validate function */
 function nameValidate() {
-  //validating name field
   message[0].classList.remove("hidden");
 
+  //validating name field
   if (firstName.value === "" && lastName.value === "") {
     message[0].innerHTML = "Name should not be empty";
     checkStatus = false;
@@ -215,37 +191,170 @@ function nameValidate() {
       lastName.value.match(fullNameRegEx)
     )
   ) {
-    message[0].innerHTML = "Name field required only alphabet characters";
+    message[0].innerHTML = "Name field contains only alphabets";
     checkStatus = false;
   } else if (firstName.value === lastName.value) {
-    message[0].innerHTML = "First and Last Names should be different";
+    message[0].innerHTML = "First and Last names should be different";
     checkStatus = false;
   } else {
     message[0].classList.add("hidden");
-
     fullNameValue = firstName.value + " " + lastName.value;
-    checkStatus = true;
-    //console.log(fullNameValue);
+  }
+}
+/** Gender Validate Function */
+function genderValidate() {
+  //getting selected gender value and validating gender field
+  message[1].classList.remove("hidden");
+  /** checks wheather gender selected or not */
+  for (const ele of gender) {
+    if (ele.checked) {
+      message[1].classList.add("hidden");
+      genderValue = ele.value;
+      //console.log(`Gender : ${ele.value}`);
+      genderCheckStatus = true;
+      break;
+    } else if (!ele.checked) {
+      message[1].innerHTML = "Please Choose your Gender!";
+      genderCheckStatus = false;
+    }
   }
 }
 
-/** Gender Validate Function */
-function getSelectedGenderValue() {
-  //getting selected gender value
-  message[1].classList.remove("hidden");
-  gender.forEach((ele) => {
-    if (ele.checked === false) {
-      message[1].innerHTML = "Please Choose your Gender!";
-      checkStatus = false;
-      // return false;
-    } else if (ele.checked) {
-      message[1].classList.add("hidden");
-      genderValue = ele.value;
-      checkStatus = true;
-      // console.log(`Gender : ${ele.value}`);
+/** Date of Birth Validation */
+dob.addEventListener("change", function () {
+  let now = new Date();
+  userDOB = dob.value;
+  //console.log(userDOB);
+  dateOfBirth = new Date(userDOB);
+  /** checks the dob is less than current date */
+  message[2].classList.remove("hidden");
+  if (dateOfBirth < now) {
+    let userYear = dateOfBirth.getFullYear();
+    //console.log(userYear);
+
+    let currentYear = now.getFullYear();
+    /** Calculation user age */
+    userAge = currentYear - userYear;
+    console.log(userAge);
+
+    if (userAge > 0 && userAge < 18) {
+      relationDetails.forEach((ele) => {
+        ele.classList.remove("hidden");
+      });
+    } else if (userAge > 18) {
+      hideUserRelationDetails();
+      address.readOnly = false;
+      pinCode.readOnly = false;
     }
+  } else {
+    message[2].innerHTML = "Invalid date!!Please select date upto today";
+    dob.value = "";
+    hideUserRelationDetails();
+  }
+});
+
+/** Hide relation details for age greater than 18 */
+function hideUserRelationDetails() {
+  relationDetails.forEach((ele) => {
+    ele.classList.add("hidden");
   });
 }
+/** validate relation gender for age less than 18 */
+function validateRelationGender() {
+  /** checks wheather gender selected or not */
+  message[6].classList.remove("hidden");
+  for (const ele of relationGender) {
+    if (ele.checked) {
+      message[6].classList.add("hidden");
+      userRelationGender = ele.value;
+      //console.log(`Gender : ${ele.value}`);
+      genderCheckStatus = true;
+      break;
+    } else if (!ele.checked) {
+      message[6].innerHTML = "Please Choose your Gender!";
+      genderCheckStatus = false;
+    }
+  }
+}
+/** validate relation name for age less than 18 */
+function validateRelationName() {
+  message[7].classList.remove("hidden");
+  if (relationName.value === "") {
+    message[7].innerHTML = "Name should not be empty";
+    checkStatus = false;
+  } else if (!relationName.value.match(fullNameRegEx)) {
+    message[7].innerHTML = "Name field required only alphabet characters";
+    checkStatus = false;
+  } else {
+    message[7].classList.add("hidden");
+    userRelationName = relationName.value;
+    console.log(userRelationName);
+  }
+}
+/** validate relation Aadhaar number for age less than 18 */
+function validateRelationAadhaarNumber() {
+  let relationAadhaarNumRegEx = /^[0-9]{12}$/;
+  message[8].classList.remove("hidden");
+  if (
+    relationAadhaarNumber.value === "" ||
+    relationAadhaarNumber.value === null
+  ) {
+    message[8].innerHTML = "Aadhaar number should not be empty!!";
+    checkStatus = false;
+  } else if (!relationAadhaarNumber.value.match(relationAadhaarNumRegEx)) {
+    message[8].innerHTML = "Invalid aadhaar number!!Must contain 12 digits";
+    checkStatus = false;
+  } else {
+    message[8].classList.add("hidden");
+    userRelationAadhaarNumber = relationAadhaarNumber.value;
+    console.log(`relationAadhaarNumber value : ${userRelationAadhaarNumber}`);
+  }
+}
+/** Gets relation aadhaar number from database */
+const getParentAadhaarNumber = async (parentAadhaarNumber, parentName) => {
+  console.log(parentAadhaarNumber, parentName);
+  try {
+    // Get information about the user parent aadhaar number using unique aadhaar number and relation name
+    if (relationName.value && relationAadhaarNumber.value) {
+      const req = await fetch(
+        `http://localhost:5000/register/${parentAadhaarNumber}/${parentName}`
+      );
+
+      const res = await req.json();
+      console.log(res);
+      if (res.length === 0) {
+        alert(
+          "No data found with that aadhaar number/relation name. Please check Your details once!!"
+        );
+      } else {
+        let getUserParentData = res[0];
+        console.log(getUserParentData);
+        address.value = getUserParentData.Address;
+        pinCode.value = getUserParentData.Pincode;
+        State.value = getUserParentData.State;
+        City.value = getUserParentData.City;
+        District.value = getUserParentData.District;
+        address.readOnly = true;
+        pinCode.readOnly = true;
+        State.readOnly = true;
+        City.readOnly = true;
+        District.readOnly = true;
+
+        addressValue = address.value;
+        pinCodeValue = pinCode.value;
+        stateValue = State.value;
+        cityValue = City.value;
+        districtValue = District.value;
+        console.log(addressValue);
+        console.log(stateValue);
+        console.log(cityValue);
+      }
+    }
+  } catch {
+    console.log("error");
+  }
+};
+
 /** Phone Number Validate Function */
 function phoneNumberValidate() {
   //validating phone number
@@ -263,7 +372,6 @@ function phoneNumberValidate() {
   } else {
     message[3].classList.add("hidden");
     phoneNumberValue = phoneNumber.value;
-    checkStatus = true;
     //console.log(phoneNumberValue);
   }
 }
@@ -284,7 +392,6 @@ function emailValidate() {
       checkStatus = false;
     } else {
       emailValue = email.value.toLowerCase();
-      checkStatus = true;
       message[4].classList.add("hidden");
       //console.log(emailValue);
     }
@@ -316,7 +423,12 @@ function sendEmail() {
     To: emailValue,
     From: "noreplyaadhaarcard@gmail.com",
     Subject: "MyAadhaaar",
-    Body: "You Have Suceessfully Registered for Aadhaar Card!!Please Login to check your Aadhaar Card",
+    Body: `<html><div class="email-template">
+    <h3>Hi ${fullNameValue},</h3>
+    <p class="email-body">You have successfully registered for Aadhaar. To check your Aadhaar Number please click
+    <a href="http://localhost:4000" class="email-body-login-link">Login</a>!!</p>
+    <p class="email-footer">Thank You,<br></br>Aadhaar Team.</p>
+    </div></html>`,
   }).then(function (message) {
     console.log("Mail sent successfully!!");
     //message[4].innerHTML = "mail sent successfully";
@@ -330,14 +442,15 @@ function passwordValidate() {
     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
   message[5].classList.remove("hidden");
   if (password.value === "" && confirmPassword.value === "") {
+    //alert("password empty");
     message[5].innerHTML = "Password should not be empty!!";
     checkStatus = false;
   } else if (!pwd_expression.test(password.value)) {
     message[5].innerHTML =
-      "Upper case, Lower case, Special character and Numeric letter are required in Password filed";
+      "Upper case, Lower case, Special character and Numeric letter are required in password filed";
     checkStatus = false;
   } else if (password.value != confirmPassword.value) {
-    message[5].innerHTML = "Password not Matched!!Please Use Same Password";
+    message[5].innerHTML = "Password not matched!!";
     checkStatus = false;
   } else if (
     confirmPassword.value.length < 4 ||
@@ -347,193 +460,42 @@ function passwordValidate() {
     checkStatus = false;
   } else {
     message[5].classList.add("hidden");
-
     passwordValue = confirmPassword.value;
-    checkStatus = true;
   }
 }
 
 /** Address Validate Function */
 function addressValidate() {
   let addressRegEx = /^[a-zA-Z0-9-:./,\s]+$/;
-  message[10].classList.remove("hidden");
+  message[9].classList.remove("hidden");
   //console.log(address.value);
   if (address.value.trim() === "") {
-    message[10].innerHTML = "Address should not be empty!!";
+    message[9].innerHTML = "Address should not be empty!!";
     checkStatus = false;
   } else if (!address.value.match(addressRegEx)) {
-    message[10].innerHTML = "Address should not contain special characters!!";
-    checkStatus = false;
-  } else {
-    message[10].classList.add("hidden");
-
-    addressValue = address.value.trimEnd().trimStart();
-    checkStatus = true;
-    //console.log(addressValue);
-  }
-}
-
-dob.addEventListener("change", function () {
-  //console.log("clickdob");
-  let now = new Date();
-  userDOB = dob.value;
-  console.log(userDOB);
-  dateOfBirth = new Date(userDOB);
-  //console.log(dateOfBirth);
-  /** checks the dob is less than current date */
-  //message[2].classList.remove("hidden");
-  if (dateOfBirth < now) {
-    let userYear = dateOfBirth.getFullYear();
-    //console.log(userYear);
-
-    let currentYear = now.getFullYear();
-    /** Calculation user age */
-    userAge = currentYear - userYear;
-    console.log(userAge);
-
-    if (userAge > 0 && userAge < 18) {
-      relationDetails.forEach((ele) => {
-        ele.classList.remove("hidden");
-      });
-    } else if (userAge > 18) {
-      hideUserRelationDetails();
-      address.readOnly = false;
-      pinCode.readOnly = false;
-    }
-    //message[2].classList.add("hidden");
-  } else {
-    alert("Invalid Date!!Please select date upto today");
-    dob.value = "";
-    hideUserRelationDetails();
-  }
-});
-
-function validateRelationGender() {
-  message[7].classList.remove("hidden");
-  relation.forEach((ele) => {
-    if (ele.checked === false) {
-      message[7].innerHTML = "Please Choose your relation!";
-      checkStatus = false;
-    } else if (ele.checked) {
-      message[7].classList.add("hidden");
-
-      console.log(`relation : ${ele.value}`);
-      userRelationGender = ele.value;
-      checkStatus = true;
-    }
-  });
-}
-function validateRelationName() {
-  message[8].classList.remove("hidden");
-  if (relationName.value === "") {
-    message[8].innerHTML = "Name should not be empty";
-    checkStatus = false;
-  } else if (!relationName.value.match(fullNameRegEx)) {
-    message[8].innerHTML = "Name field required only alphabet characters";
-    checkStatus = false;
-  } else {
-    message[8].classList.add("hidden");
-
-    userRelationName = relationName.value;
-    checkStatus = true;
-    console.log(userRelationName);
-  }
-}
-function validateRelationAadhaarNumber() {
-  let relationAadhaarNumRegEx = /^[0-9]{12}$/;
-  message[9].classList.remove("hidden");
-  if (
-    relationAadhaarNumber.value === "" ||
-    relationAadhaarNumber.value === null
-  ) {
-    message[9].innerHTML = "relationAadhaarNumber should not be empty!!";
-    checkStatus = false;
-  } else if (!relationAadhaarNumber.value.match(relationAadhaarNumRegEx)) {
-    message[9].innerHTML = "Invalid Aadhaar Number!!Must contain 12 digits";
+    message[9].innerHTML = "Address should not contain special characters!!";
     checkStatus = false;
   } else {
     message[9].classList.add("hidden");
-
-    userRelationAadhaarNumber = relationAadhaarNumber.value;
-    checkStatus = true;
-    console.log(`relationAadhaarNumber value : ${userRelationAadhaarNumber}`);
+    addressValue = address.value.trimEnd().trimStart();
+    //console.log(addressValue);
   }
 }
-
-function hideUserRelationDetails() {
-  relationDetails.forEach((ele) => {
-    ele.classList.add("hidden");
-  });
-}
-
-// gets parent aadhaar
-const getParentAadhaarNumber = async (parentAadhaarNumber, parentName) => {
-  console.log("getparentaadhaar");
-  console.log(parentAadhaarNumber, parentName);
-  try {
-    // Get information about the user parent aadhaar number using unique aadhaar number and relation name
-    console.log("try");
-    if (!relationName.value || !relationAadhaarNumber.value) {
-      alert("Please fill all the fields");
-    } else {
-      const req = await fetch(
-        `http://localhost:4500/register/${parentAadhaarNumber}/${parentName}`
-      );
-
-      const res = await req.json();
-      console.log(res);
-      if (res.length === 0) {
-        alert(
-          "No Data Found with that Aaddhar number/Relation Name. Please check Your Details Once!!"
-        );
-      } else {
-        let getUserParentData = res[0];
-        console.log(getUserParentData);
-        address.value = getUserParentData.Address;
-        pinCode.value = getUserParentData.Pincode;
-        State.value = getUserParentData.State;
-        City.value = getUserParentData.City;
-        District.value = getUserParentData.District;
-        address.readOnly = true;
-        pinCode.readOnly = true;
-        State.readOnly = true;
-        City.readOnly = true;
-        District.readOnly = true;
-
-        addressValue = address.value;
-        pinCodeValue = pinCode.value;
-        stateValue = State.value;
-        cityValue = City.value;
-        districtValue = District.value;
-        console.log(addressValue);
-        console.log(stateValue);
-        console.log(cityValue);
-      }
-    }
-  } catch {
-    console.log("error");
-  }
-};
-
 /** Pincode Validate Function */
 function pincodeValidate() {
   //validating pin code
-  //console.log("pin");
-  //alert("pin");
   let pinCodeRegEx = /^[1-9]{1}[0-9]{2}[0-9]{3}$/;
-  message[11].classList.remove("hidden");
+  message[10].classList.remove("hidden");
   if (pinCode.value === "" || pinCode.value === null) {
     //alert("empty");
-    message[11].innerHTML = "Pincode should not be empty2!!";
+    message[10].innerHTML = "Pincode should not be empty!!";
     checkStatus = false;
   } else if (!pinCode.value.match(pinCodeRegEx)) {
-    message[11].innerHTML = "Invalid pin code!!Pin code must contain 6 digits";
+    message[10].innerHTML = "Invalid pin code!!Pin code must contain 6 digits";
     checkStatus = false;
   } else {
-    message[11].classList.add("hidden");
-
+    message[10].classList.add("hidden");
     pinCodeValue = pinCode.value;
-    //checkStatus = true;
     //console.log(`Pin code : ${pinCodeValue}`);
     getDataCityState(pinCodeValue);
   }
@@ -581,39 +543,47 @@ function getCityStateValues(e) {
   districtValue = District.value;
 }
 
-/**  for multiple users */
+/**  Checks for multiple users */
 const getUserNameAndAddress = async (getUserEmail) => {
-  //console.log("getUserNameAndAddress");
-  //console.log(userName);
   try {
-    // Get information about the user name and address
-    const req = await fetch(`http://localhost:4500/register/${getUserEmail}`);
+    // Get information about the user email from database
+    const req = await fetch(`http://localhost:5000/register/${getUserEmail}`);
 
     const res = await req.json();
-    console.log(res);
+    //console.log(res);
     if (res.length === 0) {
-      console.log("res len ==0");
       randomUniqueAadhaarNumber(999999999, 1);
       sendDataToSQL();
     } else {
-      alert("You have Already Register!!");
+      alert("You have already registered!!");
+      clear();
     }
   } catch {
     console.log("error");
   }
 };
 
+function validateStatus() {
+  if (checkStatus === false || genderCheckStatus === false) {
+    alert("Please enter fields correctly!!");
+    checkStatus = true;
+  } else {
+    getUserNameAndAddress(emailValue);
+    // randomUniqueAadhaarNumber(999999999999, 1);
+    // sendDataToSQL();
+  }
+}
+
 /** Generates Unique  aadhaar number */
 const randomUniqueAadhaarNumber = (range, count) => {
   let nums = new Set();
   while (nums.size < count) {
     nums.add(
-      Math.floor(pinCodeValue.slice(2, 5) + Math.random() * (range - 1 + 1) + 1)
+      pinCodeValue.slice(2, 5) + Math.floor(Math.random() * (range - 1 + 1) + 1)
     );
   }
   userAadhaarNumber = parseInt([...nums]);
   console.log(userAadhaarNumber);
-  //sendDataToSQL();
 };
 
 // upload a photo
@@ -747,8 +717,11 @@ function sendDataToSQL() {
       districtValue,
       userAadhaarNumber
     );
-    alert("You Have Successfully registered!!");
-    sendEmail();
+    openModal();
+    close_modal.addEventListener("click", function () {
+      closeModal();
+      //sendEmail();
+    });
   }, 10000);
 }
 
