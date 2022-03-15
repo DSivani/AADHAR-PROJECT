@@ -213,7 +213,7 @@ section.login-section #login-form-submit {
   height: 37px;
   font-size: 18px;
 }
-/* -------------------------- */
+/* ------------Login Aadhaar Card Modal-------------- */
 /* CLASSES TO MAKE MODAL WORK */
 .hidden {
   display: none;
@@ -254,60 +254,42 @@ section.login-section #login-form-submit {
   border: none;
   background: none;
 }
+
+#print {
+  position: absolute;
+  top: 8px;
+  left: 0.1rem;
+  font-size: 1rem;
+  color: #ffff;
+  cursor: pointer;
+  background: none;
+  background-color: rgb(25 176 220);
+}
+.login-aadhaarCardDisplay-form {
+  border: none;
+}
 /********** Login Section --- Display Aadhaar Card Details *******************/
 section.aadhaar-card-number-header #aadhaar-number-UIAOILogo {
   position: absolute;
   left: 5px;
   height: 70px;
   top: 25px;
-  width: 300px;
+  width: 50%;
 }
 section.aadhaar-card-number-header #aadhaar-number-flagLogo {
   position: absolute;
-  width: 200px;
+  width: 30%;
   height: 70px;
-  left: 400px;
+  left: 69%;
   top: 25px;
 }
-/* section.aadhaar-card-number-body #aadhaar-card-number-upload-img {
-  margin-right: 30px;
-  position: absolute;
-  
-  height: 120px;
-  width: 100px;
-  
-} */
 .aadhaar-card-number-body {
   position: absolute;
-  left: 20px;
-  top: 10px;
+  left: 26%;
+  top: 38%;
   width: 120%;
 }
-.flex-container {
-  display: flex;
-  top: 150px;
-}
 
-.flex-child {
-  flex: 1;
-  /* border: 2px solid yellow; */
-  position: absolute;
-  left: 250px;
-  height: 200px;
-  top: 140px;
-  /* width: 360px; */
-}
-
-.flex-child:first-child {
-  margin-right: 30px;
-  position: absolute;
-  left: 50px;
-  height: 120px;
-  width: 100px;
-  border: none;
-  top: 140px;
-  padding: 0;
-}
 .login-aadhaarCardDisplay-form table {
   position: absolute;
   width: 50%;
@@ -316,232 +298,311 @@ section.aadhaar-card-number-header #aadhaar-number-flagLogo {
   border: none;
   font-size: medium;
 }
+
+#label {
+  font-size: 19px;
+  font-weight: bold;
+}
+#aadhaar-card-number-aadhaarNo-field {
+  position: absolute;
+  font-size: 32px;
+  font-weight: bold;
+  border: none;
+  left: -20px;
+  width: 50%;
+}
+#aadhaar-card-number-dob-field {
+  position: absolute;
+  left: 72px;
+  font-size: 18px;
+}
+#aadhaar-card-number-username-field {
+  position: absolute;
+  left: 72px;
+  font-size: 18px;
+}
+#aadhaar-card-number-gender-field {
+  position: absolute;
+  left: 72px;
+  font-size: 18px;
+}
 /********** Register Form *******************/
 
-/*************** REGISTER SECTION --- HEADER ***/
-.register-bgImage body {
-  background-color: #f6f5f7;
+/*************** REGISTER SECTION --- BODY ***/
+.register-bgImage {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0 auto;
+  padding: 10px;
+  background: url("https://cis-india.org/home-images/Aaadhaar.png");
+  overflow: hidden;
+  /* background-repeat: no-repeat; */
+}
+.register-section-container {
+  position: absolute;
+  top: 17%;
+  left: 26%;
+  height: 510px;
+  max-width: 700px;
+  width: 100%;
+  overflow: auto;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+.register-section-container .register-section-title {
+  font-size: 32px;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  /* background: linear-gradient(to right, rgb(2, 13, 81), rgb(25, 176, 220)); */
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.register-section-content form .register-section-user-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+form .register-section-user-details .register-section-input-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
 }
 
-header #logo-UIAOI {
-  width: 300px;
-  height: 80px;
+form .register-section-input-box span.user-details {
+  font-size: 20px;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
-header #logo-aadhaar {
-  position: absolute;
-  right: 2px;
-  width: 150px;
-  height: auto;
+.register-section-user-details .register-section-input-box input {
+  height: 40px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
 }
-/*************** REGISTER SECTION --- BODY ***/
-section.register-section {
-  position: relative;
-  margin-top: 92px;
+.register-section-user-details .register-section-input-box input:focus,
+.register-section-user-details .register-section-input-box input:valid {
+  border-color: #9b59b6;
 }
-section.register-section .register-section-body-container {
-  background-color: #fff;
-  border-radius: 10px;
-  top: 1px;
-  width: 1340px;
-  max-width: 100%;
-  min-height: 1325px;
-  max-height: 100%;
-  position: relative;
-  overflow: hidden;
-  margin: auto;
-  padding: 0 16px;
-  box-shadow: 0px 14px 28px rgba(0, 0, 0, 0.25),
-    0px 10px 10px rgba(0, 0, 0, 0.22);
+form .gender-details .gender-title {
+  font-size: 20px;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
-/************ Adding Image in container with text *****/
-section.register-section .register-section-overlay-container {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
+form .gender-details .gender {
+  font-size: 19px;
 }
-section.register-section .register-section-background-overlay {
-  background-image: linear-gradient(
-    to right,
-    rgb(2, 13, 81),
-    rgb(25, 176, 220)
-  );
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
-  color: white;
-  position: relative;
-  top: 0px;
-  left: 0px;
-  height: 100%;
-  width: 70%;
-  transform: translateX(0);
+form .gender-category {
+  display: flex;
+  width: 80%;
+  margin: 14px 0;
+  justify-content: space-between;
 }
-section.register-section .register-section-overlay-pannel {
-  position: absolute;
+form .gender-category label {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0px 40px;
-  text-align: center;
-  left: 75px;
-  top: -250px;
+  cursor: pointer;
+}
+form .gender-category label .dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+#Male:checked ~ .gender-category label .one,
+#Female:checked ~ .gender-category label .two,
+#Others:checked ~ .gender-category label .three {
+  background: #9b59b6;
+  border-color: #d9d9d9;
+}
+/* for relation gender */
+#Father:checked ~ .gender-category label .one,
+#Mother:checked ~ .gender-category label .two,
+#Guardian:checked ~ .gender-category label .three,
+#Husband:checked ~ .gender-category label .four {
+  background: #9b59b6;
+  border-color: #d9d9d9;
+}
+form input[type="radio"] {
+  display: none;
+}
+form .register-section-register-clear-button {
+  height: 45px;
+  width: 80px;
+  margin: 35px 0;
+}
+form .register-section-register-clear-button input {
   height: 100%;
   width: 100%;
-  transform: translateX(0);
-}
-section.register-section .register-section-overlay-left {
-  transform: translateX(-20%);
-}
-section.register-section .register-section-overlay-pannel button:active {
-  transform: scale(0.95);
-}
-section.register-section .register-section-overlay-pannel button.Home {
-  background-color: transparent;
-  border-color: white;
-  border-radius: 10px;
-  width: 30%;
-  height: 6%;
-  font-size: 25px;
-  text-transform: uppercase;
-}
-section.register-section
-  .register-section-overlay-pannel
-  button.Home
-  a.HomeButtonLink {
-  text-decoration: none;
+  border-radius: 5px;
+  border: none;
   color: #fff;
-}
-section.register-section .register-section-overlay-pannel h1 {
-  font-weight: bold;
-  font-size: 35px;
-}
-section.register-section .register-section-overlay-pannel p {
-  color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
-  letter-spacing: 0.3px;
-  line-height: 25px;
-  margin: 20px 0 30px;
-  text-align: center;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+form .register-section-register-clear-button input:hover {
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
 }
 
-/********* Creating registration form ***************/
-section.register-section .register-form-container {
-  position: absolute;
-  top: 0%;
-  left: 40%;
+form .register-section-register-button {
+  position: relative;
+  top: -80px;
+  left: 580px;
+  height: 45px;
+  width: 100px;
+  margin: 35px 0;
+}
+form .register-section-register-button input {
   height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
-section.register-section .register-form-container h1 {
-  font-weight: bold;
-  margin: 0;
-  text-align: center;
+form .register-section-register-button input:hover {
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
 }
-section.register-section .register-table {
-  width: 150%;
-}
-section.register-section .register-sub-table {
-  width: 70%;
-}
-/* .relation-details {
-    display: none;
-  } */
 .hidden {
   display: none;
 }
 .msg {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
   color: red;
 }
-/* input {
-  border: 2px solid rgb(25, 176, 220);
-  border-radius: 4px;
+@media (max-width: 584px) {
+  .register-section-container {
+    max-width: 100%;
+  }
+  form .register-section-user-details .register-section-input-box {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .gender-category {
+    width: 100%;
+  }
+  .register-section-content form .register-section-user-details {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .register-section-user-details::-webkit-scrollbar {
+    width: 5px;
+  }
 }
-input[type="radio"] {
-  background-color: skyblue;
-}
-input :focus {
-  box-shadow: 180px 227px 0 200px lightgrey, 180px 195px 0 200px blue;
-} */
-input {
-  border: 2px solid rgb(10, 12, 12);
-  border-radius: 4px;
-}
-input:focus {
-  outline: 2px solid rgb(2, 176, 220);
-  border: none;
-}
-input:focus:invalid {
-  outline: 2px solid rgb(206, 18, 18);
-  border: none;
-}
-/****** Register and Clear Buttons ************/
-
-section.register-section #Register-form-submit {
-  margin: 20px 0 0 270px;
-  width: 25%;
-  padding: 7px;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-weight: bold;
-  background-color: #3a3a3a;
-  cursor: pointer;
-  outline: none;
-  background-image: linear-gradient(
-    to right,
-    rgb(2, 13, 81),
-    rgb(25, 176, 220)
-  );
-  height: 37px;
-  font-size: 18px;
-}
-section.register-section #Register-form-clear-submit {
-  margin: 20px 0 0 15px;
-  width: 20%;
-  padding: 7px;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-weight: bold;
-  background-color: #3a3a3a;
-  cursor: pointer;
-  outline: none;
-  height: 37px;
-  font-size: 18px;
-  background-image: linear-gradient(
-    to right,
-    rgb(2, 13, 81),
-    rgb(25, 176, 220)
-  );
+@media (max-width: 459px) {
+  .register-section-container .register-section-content .gender-category {
+    flex-direction: column;
+  }
 }
 
 /*********************** Register Success Message ********************/
-.register-modal {
+.register-success-modal {
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 50%;
+  width: 28%;
+  height: 10%;
+  margin: 40px auto;
+  text-align: center;
+  font-family: "Source Sans Pro", sans-serif;
   transform: translate(-50%, -50%);
-  width: 25%;
-  height: 2%;
   background-color: white;
-  padding: 6rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
 }
-.register-success-message {
-  color: palegreen;
-  border: none;
+
+#register-success-modal-header {
+  padding: 2em;
+  background-color: #8bc34a;
+  display: block;
+  color: #fff;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+#register-success-modal-header i {
+  font-size: 45px;
+  position: relative;
+  top: 8px;
+  left: -5px;
+  font-weight: lighter;
+  fill: #fff;
+  margin: -3.5em auto auto 20px;
+}
+
+#status {
+  position: relative;
+  font-weight: 35px;
+  text-align: center;
+  text-transform: uppercase;
+  top: 18px;
+  letter-spacing: 2px;
+  font-size: 1.5em;
+  margin-top: -0.2em;
+  margin-bottom: 0;
+}
+#register-success-modal-content {
+  padding: 2em 2em 5em 2em;
+  background: #fff;
+  display: block;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+#register-success-modal-message {
+  position: relative;
+  margin-top: -0.5em;
+  color: #757575;
+  letter-spacing: 1px;
+}
+#register-success-modal-btnOk {
+  position: absolute;
+  top: 200px;
+  left: 120px;
+  width: 15%;
+  font-weight: bold;
+  text-decoration: none;
+  background: #8bc34a;
+  color: #fff;
+  margin: auto;
+  padding: 0.8em 3em;
+  box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.21);
+  border-radius: 25px;
+}
+.register-success-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
 }
 
 /****************** Upload photo ***********************/
@@ -551,7 +612,7 @@ section.register-section #Register-form-clear-submit {
   width: 150px;
   height: 165px;
   position: relative;
-  left: -80px;
+  left: 250px;
   top: 20px;
 }
 
@@ -561,7 +622,6 @@ section.register-section #Register-form-clear-submit {
   width: 150px;
   height: 150px;
   position: absolute;
-  /* left: 50px; */
 }
 
 #canvas {
@@ -591,12 +651,9 @@ section.register-section #Register-form-clear-submit {
 #take-photo-button {
   display: none;
   position: absolute;
-  /* margin-left: auto;
-      margin-right: auto; */
   text-align: center;
-  left: 285px;
-  top: 540px;
-  /* bottom: 36px; */
+  left: 310px;
+  top: 747px;
   padding: 4px;
   background-image: linear-gradient(
     to right,
@@ -619,8 +676,8 @@ section.register-section #Register-form-clear-submit {
 #stop-camera-button {
   display: none;
   position: absolute;
-  left: 280px;
-  top: 570px;
+  left: 310px;
+  top: 785px;
   background-image: linear-gradient(
     to right,
     rgb(2, 13, 81),
@@ -635,8 +692,8 @@ section.register-section #Register-form-clear-submit {
 
 #start-camera-button {
   position: absolute;
-  left: 320px;
-  top: 580px;
+  left: 250px;
+  top: 650px;
   border-radius: 6px;
   background-image: linear-gradient(
     to right,
@@ -652,8 +709,8 @@ section.register-section #Register-form-clear-submit {
 #retake-button {
   display: none;
   position: absolute;
-  left: 295px;
-  top: 570px;
+  left: 120px;
+  top: 770px;
   border-radius: 6px;
   background-image: linear-gradient(
     to right,
@@ -667,9 +724,7 @@ section.register-section #Register-form-clear-submit {
   cursor: pointer;
 }
 
-/*
-      ******************************CSS MEDIA QUERIES**********************
-      */
+/*******************************CSS MEDIA QUERIES***********************/
 
 /* Start of Design for small Desktops */
 
