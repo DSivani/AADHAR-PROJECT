@@ -3,7 +3,7 @@ const app = express();
 const fs = require("fs");
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
-const PORT = 4500;
+const PORT = 5000;
 
 app.listen(PORT, () =>
   console.log(`Server running at http://localhost:${PORT}`)
