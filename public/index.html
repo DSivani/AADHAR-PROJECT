@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AADHAR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
+    <link rel="stylesheet" href="CSS/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+    
+    <script defer src="loginScript.js"></script>
+  </head>
+
+  <body>
+    <!-- login header -->
+    <header>
+      <div class="header-container">
+        <section class="logo">
+          <img src="Images/Aadhaar-Card-Logo.jpg" alt="Aadhar Image" />
+        </section>
+        <nav>
+          <ul>
+            <li><a href="index.html">Sign In</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li class="HamburgerMenu-icon">
+              <img src="Images/HamburgerMenu.png" alt="HamburgerMenu-icon" />
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- login section body -->
+    <section class="login-section">
+      <!-- Background image -->
+      <img
+        src="Images/Login-section-background-image.jpg"
+        alt="Backround Image for login-section"
+      />
+      <!-- login section content -->
+      <div class="login-section-content">
+        <div class="login-section-container">
+          <div class="login-section-text">
+            <p class="login-section-heading">
+              Welcome to
+              <span class="login-section-heading-bold">myAadhaar</span>
+            </p>
+            <p class="login-section-desc">
+              Click On <b>Login</b> button to explore my Aadhaar Services. One
+              portal for all Online Services.Your Email Id is required to be
+              registered with the aadhaar to login.
+            </p>
+          </div>
+
+
+          <!-- login-section username and password  -->
+          <div class="login-section-form">
+            <main id="main-holder">
+              <div id="login-error-msg-holder">
+                <p id="login-error-msg">
+                  Invalid UserName/Password
+                  <!-- <span id="error-msg-second-line">and/or password</span> -->
+                </p>
+              </div>
+              <form  id="login-form">
+                <!-- username -->
+                <input
+                  type="text"
+                  name="username"
+                  id="username-field"
+                  class="login-form-field"
+                  placeholder="Username"
+                />
+                <!-- password -->
+                <input
+                  type="password"
+                  name="password"
+                  id="password-field"
+                  class="login-form-field"
+                  placeholder="Password"
+                />
+                <!-- login button -->
+                <input type="submit" value="Login" id="login-form-submit" />
+
+                <!-- <button id="login-form-submit">Login</button> -->
+
+                <p>Not Register? <a href="register.html">Register</a></p>
+              </form>
+            </main>
+          </div>
+        </div>
+      </div>
+      <!-- Aadhaar card modal -->
+      <div class="modal hidden">
+        <button class="close-modal">&times;</button>
+        <section class="aadhaar-card-number">
+          <section class="aadhaar-card-number-header" >
+            <!-- Aadhaar card modal header -->
+            <input type="button" id="print" value="Print" onclick="window.print()" />
+            <img src="Images/Unique-identification-Authority-of-India.jpg" id="aadhaar-number-UIAOILogo" />
+            <img src="Images/govtOfIndia.jpg" id="aadhaar-number-flagLogo" /> 
+           
+          </section>
+          <hr style="width:100%;position: absolute;margin-left: -95px;border-color: red;background-color: red;" >
+         <!-- Aadhaar card modal body -->
+          <section class="aadhaar-card-number-body">
+            <div class="flex-container">
+              <!-- user image -->
+              <div class="flex-child">
+                <img src="" id="aadhaar-card-number-upload-img" />
+              </div>
+    
+              <form class="login-aadhaarCardDisplay-form">
+                <!-- username -->
+                <div>
+                  <label id="label">Name:</label>
+                  <input type="text" 
+                  name="username"
+                  id="aadhaar-card-number-username-field" />
+                </div>
+                <br><br>
+                <!-- user DOB -->
+                <div>
+                  <label id="label">DOB:</label>
+                  <input type="text" 
+                  name="date-of-birth"
+                  id="aadhaar-card-number-dob-field" />
+                </div>
+                <br><br>
+                <!-- user gender -->
+                <div>
+                  <label id="label">Gender:</label>
+                  <input type="text" 
+                  name="gender"
+                  id="aadhaar-card-number-gender-field" />
+                </div>
+                <br><br>
+                <!-- user aadhaar number -->
+                <div>
+                  <input type="text" name="aadhaarNumber" id="aadhaar-card-number-aadhaarNo-field" />
+                </div>
+                <br><br>
+              </form>
+            </div>
+          </div>
+          </section>
+          <!-- for blur background -->
+        <div class="overlay hidden"></div>
+        </section>
+        
+    </section>
+  </body>
+</html>

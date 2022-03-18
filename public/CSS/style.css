@@ -1,0 +1,801 @@
+header {
+  height: 80px;
+  background-color: white;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+header .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+/********** Login Form *******************/
+/********** Login Section --- Header *******************/
+header img {
+  width: 150px;
+  height: auto;
+}
+header .logo {
+  display: inline-block;
+  color: white;
+  font-size: 27px;
+}
+
+header nav {
+  display: inline-block;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+header nav ul li {
+  display: inline-block;
+}
+header nav ul li.HamburgerMenu-icon {
+  display: none;
+}
+header nav ul li.HamburgerMenu-icon img {
+  background-color: white;
+  vertical-align: middle;
+  width: 26px;
+  height: auto;
+}
+header nav ul li a {
+  color: black;
+  font-size: 15px;
+  letter-spacing: 0.37px;
+  margin-right: 24px;
+  text-decoration: none;
+}
+header nav ul li a:hover {
+  color: #3e50e5;
+}
+header nav ul li:last-of-type a {
+  margin-right: 0;
+}
+/********** Login Section --- Body *******************/
+
+section.login-section {
+  position: relative;
+  top: 75px;
+
+  /* display: none; */
+}
+section.login-section img {
+  width: 100%;
+  height: 650px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  margin-top: 8px;
+  margin-bottom: 32px;
+}
+section.login-section .login-section-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+section.login-section .login-section-container {
+  max-width: 1170px;
+  padding: 0 32px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto;
+}
+section.login-section .login-section-text {
+  width: 50%;
+  margin: auto 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+}
+
+section.login-section .login-section-heading {
+  width: 50%;
+  margin: auto 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: none;
+  color: #fff;
+  font-size: 60px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 58px;
+  margin-bottom: 28px;
+}
+section.login-section .login-section-heading-bold {
+  font-weight: 600;
+}
+section.login-section .login-section-desc {
+  max-width: 518px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 25px;
+  margin-top: 0;
+  margin-bottom: 21px;
+  padding: 0;
+  text-align: left;
+}
+
+section.login-section .login-section-form {
+  position: relative;
+  height: 450px;
+  width: 400px;
+  top: 0;
+  left: 0;
+  transform: none;
+  padding: 50px;
+  margin-top: 150px;
+}
+section.login-section #main-holder {
+  width: 80%;
+  height: 70%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: 0px 0px 5px 2px black;
+}
+section.login-section #login-error-msg-holder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+section.login-section #login-error-msg {
+  width: 90%;
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  opacity: 0;
+}
+
+section.login-section #login-form {
+  align-self: flex-start;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 222px;
+}
+
+section.login-section .login-form-field::placeholder {
+  color: #3a3a3a;
+}
+
+section.login-section .login-form-field {
+  border: none;
+  border-bottom: 1px solid #3a3a3a;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  outline: none;
+  padding: 0px 0px 5px 5px;
+  font-weight: bold;
+}
+
+section.login-section #login-form-submit {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: #3a3a3a;
+  cursor: pointer;
+  outline: none;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+  height: 37px;
+  font-size: 18px;
+}
+/* ------------Login Aadhaar Card Modal-------------- */
+/* CLASSES TO MAKE MODAL WORK */
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 30%;
+
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+.close-modal {
+  position: absolute;
+  top: 0;
+  right: 0.1rem;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+#print {
+  position: absolute;
+  top: 8px;
+  left: 0.1rem;
+  font-size: 1rem;
+  color: #ffff;
+  cursor: pointer;
+  background: none;
+  background-color: rgb(25 176 220);
+}
+.login-aadhaarCardDisplay-form {
+  position: absolute;
+  top: 25px;
+  border: none;
+}
+/********** Login Section --- Display Aadhaar Card Details *******************/
+section.aadhaar-card-number-header #aadhaar-number-UIAOILogo {
+  position: absolute;
+  left: 5px;
+  height: 70px;
+  top: 25px;
+  width: 50%;
+}
+section.aadhaar-card-number-header #aadhaar-number-flagLogo {
+  position: absolute;
+  width: 30%;
+  height: 70px;
+  left: 69%;
+  top: 25px;
+}
+.aadhaar-card-number-body {
+  position: absolute;
+  left: 26%;
+  top: 38%;
+  width: 120%;
+}
+
+.login-aadhaarCardDisplay-form table {
+  position: absolute;
+  width: 50%;
+}
+.login-aadhaarCardDisplay-form input {
+  border: none;
+  font-size: medium;
+  width: 180px;
+}
+
+#label {
+  position: absolute;
+  left: 110px;
+  font-size: 19px;
+  font-weight: bold;
+}
+#aadhaar-card-number-aadhaarNo-field {
+  position: absolute;
+  font-size: 32px;
+  font-weight: bold;
+  border: none;
+  top: 150px;
+  left: -20px;
+  width: 400px;
+}
+
+#aadhaar-card-number-dob-field {
+  position: absolute;
+  left: 220px;
+  font-size: 18px;
+}
+#aadhaar-card-number-username-field {
+  position: absolute;
+  left: 220px;
+  font-size: 18px;
+}
+#aadhaar-card-number-gender-field {
+  position: absolute;
+  left: 220px;
+  font-size: 18px;
+}
+/** Retrieve image*/
+section.aadhaar-card-number-body #aadhaar-card-number-upload-img {
+  /* margin-right: 30px; */
+  position: absolute;
+  /* left: 10px; */
+  height: 150px;
+  width: 140px;
+  /* border: none;*/
+}
+.flex-container {
+  display: flex;
+  top: 40px;
+}
+
+.flex-child {
+  flex: 1;
+  /* border: 2px solid yellow; */
+  position: absolute;
+  left: -100px;
+  height: 200px;
+  top: 0px;
+  width: 400px;
+}
+/********** Register Form *******************/
+
+/*************** REGISTER SECTION --- BODY ***/
+.register-bgImage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: url("https://cis-india.org/home-images/Aaadhaar.png");
+  overflow: hidden;
+  /* background-repeat: no-repeat; */
+}
+.register-section-container {
+  position: absolute;
+  top: 17%;
+  left: 26%;
+  height: 510px;
+  max-width: 700px;
+  width: 100%;
+  overflow: auto;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+.register-section-container .register-section-title {
+  font-size: 32px;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  /* background: linear-gradient(to right, rgb(2, 13, 81), rgb(25, 176, 220)); */
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.register-section-content form .register-section-user-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+form .register-section-user-details .register-section-input-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+
+form .register-section-input-box span.user-details {
+  font-size: 20px;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.register-section-user-details .register-section-input-box input {
+  height: 40px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.register-section-user-details .register-section-input-box input:focus,
+.register-section-user-details .register-section-input-box input:valid {
+  border-color: #9b59b6;
+}
+form .gender-details .gender-title {
+  font-size: 20px;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+form .gender-details .gender {
+  font-size: 19px;
+}
+form .gender-category {
+  display: flex;
+  width: 80%;
+  margin: 14px 0;
+  justify-content: space-between;
+}
+form .gender-category label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+form .gender-category label .dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+#Male:checked ~ .gender-category label .one,
+#Female:checked ~ .gender-category label .two,
+#Others:checked ~ .gender-category label .three {
+  background: #9b59b6;
+  border-color: #d9d9d9;
+}
+/* for relation gender */
+#Father:checked ~ .gender-category label .one,
+#Mother:checked ~ .gender-category label .two,
+#Guardian:checked ~ .gender-category label .three,
+#Husband:checked ~ .gender-category label .four {
+  background: #9b59b6;
+  border-color: #d9d9d9;
+}
+form input[type="radio"] {
+  display: none;
+}
+form .register-section-register-clear-button {
+  height: 45px;
+  width: 80px;
+  margin: 35px 0;
+}
+form .register-section-register-clear-button input {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+form .register-section-register-clear-button input:hover {
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+form .register-section-register-button {
+  position: relative;
+  top: -80px;
+  left: 580px;
+  height: 45px;
+  width: 100px;
+  margin: 35px 0;
+}
+form .register-section-register-button input {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+form .register-section-register-button input:hover {
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+.hidden {
+  display: none;
+}
+.msg {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: red;
+}
+@media (max-width: 584px) {
+  .register-section-container {
+    max-width: 100%;
+  }
+  form .register-section-user-details .register-section-input-box {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .gender-category {
+    width: 100%;
+  }
+  .register-section-content form .register-section-user-details {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .register-section-user-details::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+@media (max-width: 459px) {
+  .register-section-container .register-section-content .gender-category {
+    flex-direction: column;
+  }
+}
+
+/*********************** Register Success Message ********************/
+.register-success-modal {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 28%;
+  height: 10%;
+  margin: 40px auto;
+  text-align: center;
+  font-family: "Source Sans Pro", sans-serif;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+#register-success-modal-header {
+  padding: 2em;
+  background-color: #8bc34a;
+  display: block;
+  color: #fff;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+#register-success-modal-header i {
+  font-size: 45px;
+  position: relative;
+  top: 8px;
+  left: -5px;
+  font-weight: lighter;
+  fill: #fff;
+  margin: -3.5em auto auto 20px;
+}
+
+#status {
+  position: relative;
+  font-weight: 35px;
+  text-align: center;
+  text-transform: uppercase;
+  top: 18px;
+  letter-spacing: 2px;
+  font-size: 1.5em;
+  margin-top: -0.2em;
+  margin-bottom: 0;
+}
+#register-success-modal-content {
+  padding: 2em 2em 5em 2em;
+  background: #fff;
+  display: block;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+#register-success-modal-message {
+  position: relative;
+  margin-top: -0.5em;
+  color: #757575;
+  letter-spacing: 1px;
+}
+#register-success-modal-btnOk {
+  position: absolute;
+  top: 200px;
+  left: 120px;
+  width: 15%;
+  font-weight: bold;
+  text-decoration: none;
+  background: #8bc34a;
+  color: #fff;
+  margin: auto;
+  padding: 0.8em 3em;
+  box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.21);
+  border-radius: 25px;
+}
+.register-success-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+/****************** Upload photo ***********************/
+#video {
+  display: none;
+  border: 1px solid black;
+  width: 150px;
+  height: 165px;
+  position: relative;
+  left: 250px;
+  top: 20px;
+}
+
+#photo {
+  display: none;
+  border: 1px solid black;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+}
+
+#canvas {
+  display: none;
+}
+
+.camera {
+  width: 340px;
+  display: inline-block;
+}
+
+.output {
+  position: relative;
+  height: 195px;
+  left: 320px;
+  top: -92px;
+  display: block;
+}
+.output img {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  left: -250px;
+  top: 92px;
+}
+
+#take-photo-button {
+  display: none;
+  position: absolute;
+  text-align: center;
+  left: 310px;
+  top: 747px;
+  padding: 4px;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+
+.contentarea {
+  font-size: 16px;
+  font-family: Arial;
+  text-align: center;
+  height: 230px;
+}
+#stop-camera-button {
+  display: none;
+  position: absolute;
+  left: 310px;
+  top: 785px;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+
+#start-camera-button {
+  position: absolute;
+  left: 250px;
+  top: 650px;
+  border-radius: 6px;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+#retake-button {
+  display: none;
+  position: absolute;
+  left: 120px;
+  top: 770px;
+  border-radius: 6px;
+  background-image: linear-gradient(
+    to right,
+    rgb(2, 13, 81),
+    rgb(25, 176, 220)
+  );
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+
+/*******************************CSS MEDIA QUERIES***********************/
+
+/* Start of Design for small Desktops */
+
+@media screen and (max-width: 1440px) {
+  .container {
+    width: 1180px;
+  }
+  body {
+    padding-top: 70px;
+  }
+  header {
+    height: 70px;
+  }
+}
+/* End of Design for small Desktops */
+
+/* Start of design for Tablets */
+@media screen and (max-width: 960px) {
+  .container {
+    max-width: 92%;
+  }
+  header .logo {
+    font-size: 24px;
+  }
+  header nav ul li {
+    display: none;
+  }
+  header nav ul li.HamburgerMenu-icon {
+    display: inline-block;
+  }
+}
+/* End of design for Tablets */
+
+/* Start of design for Mobiles */
+@media screen and (max-width: 576px) {
+  header .logo {
+    font-size: 18px;
+  }
+  header .logo .blue-dot {
+    width: 7px;
+    height: 7px;
+  }
+}
+/* End of design for Mobiles */
