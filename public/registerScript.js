@@ -28,6 +28,7 @@ const pic = document.querySelector("#photo");
 
 const registerForm = document.querySelector(".register");
 const message = document.querySelectorAll(".msg");
+const photoMessage = document.querySelector(".photoMsg");
 
 /** state city pincode */
 let District, State, City;
@@ -70,7 +71,6 @@ let photo = document.getElementById("photo");
 let takePhoto = document.getElementById("take-photo-button");
 let startCamera = document.getElementById("start-camera-button");
 let stopCamera = document.getElementById("stop-camera-button");
-let retakePhoto = document.getElementById("retake-button");
 
 let width = 320; // We will scale the photo width to this
 let height = 0; // This will be computed based on the input stream
@@ -90,15 +90,12 @@ let fullNameValue,
   emailValue,
   passwordValue,
   clicked,
-  bs64String,
-  blobUrl,
+  userPhotoPath,
   addressValue,
   pinCodeValue,
   stateValue,
   cityValue,
   districtValue,
-  temp,
-  userPic,
   cityParentValue,
   stateParentValue,
   districtParentValue,
@@ -114,7 +111,7 @@ const saveDataToSQL = async (
   phoneNumberValue,
   emailValue,
   passwordValue,
-  blobUrl,
+  userPhotoPath,
   addressValue,
   pinCodeValue,
   stateValue,
@@ -133,7 +130,7 @@ const saveDataToSQL = async (
       PhoneNumber: phoneNumberValue,
       EmailId: emailValue,
       Password: passwordValue,
-      Picture: blobUrl,
+      Picture: userPhotoPath,
       Address: addressValue,
       Pincode: pinCodeValue,
       State: stateValue,
@@ -153,8 +150,10 @@ const saveDataToSQL = async (
   clear();
 };
 
-// Regular Expressions for Input Name Field
+// Regular Expressions for Input Name and Email Field
 let fullNameRegEx = /^[A-Za-z_ ]+$/;
+let emailRegex =
+  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 /**
  * Click event for rgistration buttion
@@ -445,8 +444,6 @@ function phoneNumberValidate() {
  * @returns {String} "Email"
  */
 function emailValidate() {
-  let emailRegex =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   message[4].classList.remove("hidden");
   /** validate email */
   if (email.value === "" || email.value === null) {
@@ -481,6 +478,7 @@ function sendEmail() {
   } else if (emailOnly === "live") {
     checkEmail = ".live";
   }
+
   /** sends mail  */
   Email.send({
     Host: `smtp${checkEmail}.com`,
@@ -675,12 +673,22 @@ const randomUniqueAadhaarNumber = (range, count) => {
  */
 startCamera.addEventListener("click", function (ev) {
   ev.preventDefault();
-  clicked = true;
+  // clicked = true;
+  /** start camera function */
   startCam();
-  takePhoto.addEventListener("click", takePicture);
+  /** To stop camera function */
+  stopCamera.addEventListener("click", function (eve) {
+    eve.preventDefault();
+    stopCam();
+  });
+  /** To take and save the user hoto */
+  takePhoto.onclick = (e) => {
+    e.preventDefault();
+    clicked = true;
+    takeASnap().then(download);
+  };
+  /** clear photo fuction */
   clearPhoto();
-  stopCamera.addEventListener("click", stopCam);
-  retakePhoto.addEventListener("click", retakePicture);
 });
 
 /** To start the web camera */
@@ -723,82 +731,6 @@ function startCam() {
     false
   );
 }
-//takes picture
-function takePicture(ev) {
-  ev.preventDefault();
-
-  let context = canvas.getContext("2d");
-  if (width && height) {
-    canvas.width = width;
-    canvas.height = height;
-    context.drawImage(video, 0, 0, width, height);
-
-    var data = canvas.toDataURL("image/png");
-    photo.setAttribute("src", data);
-    bs64String = photo.src;
-    //console.log(bs64String);
-    /** converts base64 string into bloburl */
-    const b64toBlob = (b64Data, contentType = "", sliceSize = 240108) => {
-      const byteCharacters = atob(b64Data);
-      const byteArrays = [];
-
-      for (
-        let offset = 0;
-        offset < byteCharacters.length;
-        offset += sliceSize
-      ) {
-        const slice = byteCharacters.slice(offset, offset + sliceSize);
-
-        const byteNumbers = new Array(slice.length);
-        for (let i = 0; i < slice.length; i++) {
-          byteNumbers[i] = slice.charCodeAt(i);
-        }
-
-        const byteArray = new Uint8Array(byteNumbers);
-        byteArrays.push(byteArray);
-        console.log(byteArrays.push(byteArray));
-      }
-
-      const blob = new Blob(byteArrays, { type: contentType });
-      console.log(blob);
-
-      return blob;
-    };
-    const totalBase64Data = bs64String.split(":").pop().split(";");
-    const getContentType = totalBase64Data[0];
-    console.log("Content Type1 :" + getContentType);
-    const contentType = getContentType;
-    console.log(contentType);
-    const getB64Data = totalBase64Data[1].split(",").pop();
-    console.log(getB64Data);
-    const b64Data = getB64Data;
-    console.log(b64Data);
-
-    const blob = b64toBlob(b64Data, contentType);
-    blobUrl = URL.createObjectURL(blob);
-    // console.log(URL.createObjectURL(blob));
-    console.log("blob url " + blobUrl);
-
-    stopCam();
-    startCamera.style.display = "none";
-    video.style.display = "none";
-    takePhoto.style.display = "none";
-    photo.style.display = "block";
-    retakePhoto.style.display = "block";
-  } else {
-    clearPhoto();
-  }
-}
-
-//to clear the saved image and gets the latest image
-function clearPhoto() {
-  var context = canvas.getContext("2d");
-  context.fillStyle = "#AAA";
-  context.fillRect(0, 0, canvas.width, canvas.height);
-
-  var data = canvas.toDataURL("image/png");
-  photo.setAttribute("src", data);
-}
 // stops the webcam
 function stopCam() {
   var stream = video.srcObject;
@@ -814,13 +746,62 @@ function stopCam() {
   stopCamera.style.display = "none";
   startCamera.style.display = "block";
 }
+/** To capture user photo from webcam */
+function takeASnap() {
+  let context = canvas.getContext("2d");
+  if (width && height) {
+    canvas.width = width;
+    canvas.height = height;
+    context.drawImage(video, 0, 0, width, height);
 
-// retake photo
-function retakePicture() {
-  startCamera.style.display = "none";
-  photo.style.display = "none";
-  retakePhoto.style.display = "none";
-  startCam();
+    return new Promise((res, rej) => {
+      canvas.toBlob(res, "image/jpeg"); // request a Blob from the canvas
+    });
+  }
+}
+/** To download the capture image and save to database */
+function download(blob) {
+  // uses the <a download> to download a Blob
+  if (email.value && email.value.match(emailRegex)) {
+    let a = document.createElement("a");
+
+    a.href = URL.createObjectURL(blob);
+
+    /** To save  and download image with email name */
+    let saveImageNameAs = email.value.split("@")[0];
+
+    a.download = `${saveImageNameAs}.jpg`;
+
+    /** Downloaded image path */
+    userPhotoPath = `userPhotos/${a.download}`;
+    // console.log(userPhotoPath);
+
+    document.body.appendChild(a);
+
+    stopCam();
+
+    a.click();
+    startCamera.style.display = "none";
+    video.style.display = "none";
+    takePhoto.style.display = "none";
+    photo.style.display = "none";
+    photoMessage.innerHTML =
+      "Your Photo has been successfully downloaded  and saved to database";
+
+    // clearPhoto();
+  } else {
+    swal("Please enter your valid email id!!");
+  }
+}
+
+//to clear the saved image and gets the latest image
+function clearPhoto() {
+  var context = canvas.getContext("2d");
+  context.fillStyle = "#AAA";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+  var data = canvas.toDataURL("image/png");
+  photo.setAttribute("src", data);
 }
 
 /** Sends  Data to SQL */
@@ -834,7 +815,7 @@ function sendDataToSQL() {
       phoneNumberValue,
       emailValue,
       passwordValue,
-      blobUrl,
+      userPhotoPath,
       addressValue,
       pinCodeValue,
       stateValue,
@@ -844,8 +825,8 @@ function sendDataToSQL() {
     );
     openModal();
     close_modal.addEventListener("click", function () {
-      closeModal();
       sendEmail();
+      closeModal();
     });
   }, 10000);
 }
@@ -854,8 +835,12 @@ function sendDataToSQL() {
 function clear() {
   registerForm.reset();
   /**clear the user photo */
+  photoMessage.innerHTML = "";
   clearPhoto();
   startCamera.style.display = "block";
   photo.style.display = "none";
-  retakePhoto.style.display = "none";
+  video.style.display = "none";
+  takePhoto.style.display = "none";
+  stopCam();
+  stopCamera.style.display = "none";
 }

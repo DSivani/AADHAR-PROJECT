@@ -24,10 +24,12 @@ const userGenderField = document.querySelector(
 const loginAadhaarCardForm = document.querySelector(
   ".login-aadhaarCardDisplay-form"
 );
-const retrieveImage = document.querySelector("#aadhaar-card-number-upload-img");
+const retrieveUserImage = document.querySelector(
+  "#aadhaar-card-number-upload-img"
+);
 
 /** Declaring global variables */
-let username, password, getUserLoginData, blob;
+let username, password, getUserLoginData, getUserPhotoPath;
 
 /**
  * To open aadhar card modal when user clicks on login
@@ -93,8 +95,8 @@ const getUserNameAndPassword = async (userName, userPassword) => {
       userNameField.value = getUserLoginData.FullName;
       userDOBField.value = getUserLoginData.DateOfBirth;
       userGenderField.value = getUserLoginData.Gender;
-      blob = getUserLoginData.Picture;
-      retrieveImage.src = blob;
+      getUserPhotoPath = getUserLoginData.Picture;
+      retrieveUserImage.src = getUserPhotoPath;
       userAadhaarNumberField.readOnly = true;
       userNameField.readOnly = true;
       userDOBField.readOnly = true;

@@ -32,7 +32,7 @@
         </section>
         <nav>
           <ul>
-            <li><a href="index.html">Sign In</a></li>
+            <li><a href="http://localhost:5000">Sign In</a></li>
             <li class="HamburgerMenu-icon">
               <img src="Images/HamburgerMenu.png" alt="HamburgerMenu-icon" />
             </li>
@@ -177,20 +177,26 @@
               <div class="register-section-input-box">
                 <span class="user-details">Upload a Photo *</span>
                 <div class="contentarea">
+                  <span class="photoMsg" style="color: green;"></span>
+                  <!-- camera -->
                   <div class="camera">
                     <video id="video" width="100%" height="100%"></video>
                   </div>
-
+                  <!-- save photo -->
                   <div>
-                    <button id="take-photo-button">Take photo</button>
+                    <button id="take-photo-button">Save Photo</button>
                   </div>
+                  <!-- start camera -->
                   <div>
-                    <button id="start-camera-button">Start Camera</button>
+                    <button id="start-camera-button">Start <i class="fa fa-camera"></i></button>
+                   
                   </div>
+                
+                  <!-- stop camera -->
                   <div>
-                    <button id="stop-camera-button">Stop camera</button>
+                    <button id="stop-camera-button">Stop Camera</button>
                   </div>
-                  <div><button id="retake-button">Retake Photo</button></div>
+                  <!-- <div><button id="retake-button">Retake Photo</button></div> -->
 
                   <canvas id="canvas"></canvas>
 
@@ -203,6 +209,7 @@
                   </div>
                 </div>
               </div>
+              
             </div>
             <!-- User Relation Gender -->
             <div class="relation-details hidden">

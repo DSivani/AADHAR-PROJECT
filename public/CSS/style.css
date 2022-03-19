@@ -267,7 +267,7 @@ section.login-section #login-form-submit {
 }
 .login-aadhaarCardDisplay-form {
   position: absolute;
-  top: 25px;
+  top: 14px;
   border: none;
 }
 /********** Login Section --- Display Aadhaar Card Details *******************/
@@ -299,13 +299,13 @@ section.aadhaar-card-number-header #aadhaar-number-flagLogo {
 .login-aadhaarCardDisplay-form input {
   border: none;
   font-size: medium;
-  width: 180px;
+  width: 155px;
 }
 
 #label {
   position: absolute;
-  left: 110px;
-  font-size: 19px;
+  left: 75px;
+  font-size: 25px;
   font-weight: bold;
 }
 #aadhaar-card-number-aadhaarNo-field {
@@ -313,25 +313,29 @@ section.aadhaar-card-number-header #aadhaar-number-flagLogo {
   font-size: 32px;
   font-weight: bold;
   border: none;
-  top: 150px;
-  left: -20px;
-  width: 400px;
+  top: 170px;
+  width: 300px;
 }
 
 #aadhaar-card-number-dob-field {
   position: absolute;
-  left: 220px;
-  font-size: 18px;
+  left: 150px;
+  font-size: 20px;
+  top: 57px;
 }
 #aadhaar-card-number-username-field {
   position: absolute;
-  left: 220px;
-  font-size: 18px;
+  left: 152px;
+  font-size: 20px;
+  top: 3px;
+  width: 200px;
 }
 #aadhaar-card-number-gender-field {
   position: absolute;
-  left: 220px;
-  font-size: 18px;
+  top: 113px;
+  font-size: 20px;
+  left: 167px;
+  width: 90px;
 }
 /** Retrieve image*/
 section.aadhaar-card-number-body #aadhaar-card-number-upload-img {
