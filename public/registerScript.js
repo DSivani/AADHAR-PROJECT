@@ -619,7 +619,7 @@ function getCityStateValues(e) {
  * If user register with same email then throws an error
  * @param {string} "getUserEmail"
  */
-const getUserNameAndAddress = async (getUserEmail) => {
+const getUserEmailId = async (getUserEmail) => {
   try {
     // Get information about the user email from database
     /** fetch users details based on user email id */
@@ -645,7 +645,7 @@ function validateStatus() {
     swal("Please enter fields correctly!!");
     checkStatus = true;
   } else {
-    getUserNameAndAddress(emailValue);
+    getUserEmailId(emailValue);
   }
 }
 
@@ -685,6 +685,7 @@ startCamera.addEventListener("click", function (ev) {
   takePhoto.onclick = (e) => {
     e.preventDefault();
     clicked = true;
+
     takeASnap().then(download);
   };
   /** clear photo fuction */
@@ -774,7 +775,6 @@ function download(blob) {
 
     /** Downloaded image path */
     userPhotoPath = `userPhotos/${a.download}`;
-    // console.log(userPhotoPath);
 
     document.body.appendChild(a);
 
@@ -824,8 +824,8 @@ function sendDataToSQL() {
       userAadhaarNumber
     );
     openModal();
+    sendEmail();
     close_modal.addEventListener("click", function () {
-      sendEmail();
       closeModal();
     });
   }, 10000);
